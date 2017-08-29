@@ -1,5 +1,3 @@
-using System;
-
 namespace thewhiskeystudy.Models
 {
     public class ErrorViewModel

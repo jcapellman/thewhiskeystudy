@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+
+using thewhiskeystudy.Objects;
 
 namespace thewhiskeystudy.Managers
 {
-    public class DBManager
+    public class DBManager : BaseManager
     {
+        public DbSet<Reviews> Reviews { get; set; }
     }
 }

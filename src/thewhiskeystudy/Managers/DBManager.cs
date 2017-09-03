@@ -13,12 +13,15 @@ namespace thewhiskeystudy.Managers
         {
             using (var db = new DBFactory())
             {
-                return db.SelectMany<Reviews>(a => a.Active).Select(b => new ReviewListResponseItem
-                {
-                    Body = b.Body,
-                    Title = b.Title,
-                    URL = b.URL
-                }).ToList();
+                return db.SelectMany<Reviews>().Select(b => new ReviewListResponseItem(b)).ToList();
+            }
+        }
+
+        public List<LeaderboardListResponseItem> GetLeaderboard()
+        {
+            using (var db = new DBFactory())
+            {
+                return db.SelectMany<Reviews>().OrderBy(a => a.Category).ThenByDescending(a => a.OverallScore).Select(a => new LeaderboardListResponseItem(a)).ToList();
             }
         }
     }

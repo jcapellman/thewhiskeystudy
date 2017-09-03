@@ -1,5 +1,7 @@
 ﻿using System.Runtime.Serialization;
 
+using thewhiskeystudy.DAL.Tables;
+
 namespace thewhiskeystudy.Objects
 {
     [DataContract]
@@ -13,5 +15,14 @@ namespace thewhiskeystudy.Objects
 
         [DataMember]
         public string Body { get; set; }
+
+        public ReviewListResponseItem() { }
+
+        public ReviewListResponseItem(Reviews review)
+        {
+            Title = review.Title;
+            URL = review.URL;
+            Body = review.Body;
+        }
     }
 }

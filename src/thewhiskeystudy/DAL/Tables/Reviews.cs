@@ -1,4 +1,6 @@
-﻿namespace thewhiskeystudy.DAL.Tables
+﻿using thewhiskeystudy.Enums;
+
+namespace thewhiskeystudy.DAL.Tables
 {
     public class Reviews : BaseTable
     {
@@ -7,5 +9,9 @@
         public string URL { get; set; }
         
         public string Body { get; set; }
+
+        public Categories Category { get; set; }
+
+        public double OverallScore { get; set; }
     }
 }

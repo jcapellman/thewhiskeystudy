@@ -1,1 +1,10 @@
-﻿
+﻿@model List<thewhiskeystudy.Objects.ReviewListResponseItem>
+
+@{ 
+    ViewBag.Title = "Reviews";
+}
+
+@foreach (var review in Model)
+{
+    <div><a href="@review.URL">@review.Title</a> @review.PostDate</div>
+}

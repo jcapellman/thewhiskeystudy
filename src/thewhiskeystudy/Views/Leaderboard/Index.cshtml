@@ -1,1 +1,19 @@
-﻿
+﻿@model List<thewhiskeystudy.Objects.LeaderboardListResponseItem>
+
+@{
+    ViewBag.Title = "Leaderboard";
+}
+
+@foreach (var category in Model.GroupBy(a => a.Category).Select(b => b.Key))
+{
+    <div class="page-header">@category</div>
+
+    @for (var x = 0; x < Model.Where(a => a.Category == category).ToList().Count; x++)
+    { 
+        var review = Model.Where(a => a.Category == category).ToList()[x];
+
+        var index = x + 1;
+        
+        <div>@index. <a href="@review.URL">@review.Name</a></div>
+    }
+}

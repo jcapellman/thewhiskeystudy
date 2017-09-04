@@ -4,9 +4,11 @@
     ViewBag.Title = "Leaderboard";
 }
 
+<h1>Leaderboard</h1>
+
 @foreach (var category in Model.GroupBy(a => a.Category).Select(b => b.Key))
 {
-    <div class="page-header">@category</div>
+    <h3>@category</h3>
 
     @for (var x = 0; x < Model.Where(a => a.Category == category).ToList().Count; x++)
     { 
@@ -14,6 +16,6 @@
 
         var index = x + 1;
         
-        <div>@index. <a href="@review.URL">@review.Name</a></div>
+        <h4>@index. <a href="@review.URL">@review.Name</a></h4>
     }
 }

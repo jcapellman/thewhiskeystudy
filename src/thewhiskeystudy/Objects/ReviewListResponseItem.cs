@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 using thewhiskeystudy.DAL.Tables;
 
@@ -16,6 +17,9 @@ namespace thewhiskeystudy.Objects
         [DataMember]
         public string Body { get; set; }
 
+        [DataMember]
+        public DateTime PostDate { get; set; }
+
         public ReviewListResponseItem() { }
 
         public ReviewListResponseItem(Reviews review)
@@ -23,6 +27,7 @@ namespace thewhiskeystudy.Objects
             Title = review.Title;
             URL = review.URL;
             Body = review.Body;
+            PostDate = review.Created;
         }
     }
 }

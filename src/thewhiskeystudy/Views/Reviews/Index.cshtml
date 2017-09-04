@@ -4,7 +4,9 @@
     ViewBag.Title = "Reviews";
 }
 
+<h1>Reviews</h1>
+
 @foreach (var review in Model)
 {
-    <div><a href="@review.URL">@review.Title</a> @review.PostDate</div>
+    <h4><a href="@review.URL">@review.Title</a> - @review.PostDate.Date.ToShortDateString()</h4>
 }

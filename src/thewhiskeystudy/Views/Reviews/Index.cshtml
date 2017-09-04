@@ -8,5 +8,5 @@
 
 @foreach (var review in Model)
 {
-    <h4><a href="@review.URL">@review.Title</a> - @review.PostDate.Date.ToShortDateString()</h4>
+    <span><a href="@review.URL">@review.Title</a> - @review.PostDate.Date.ToShortDateString()</span>
 }

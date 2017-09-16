@@ -16,6 +16,9 @@ namespace thewhiskeystudy.Objects
         [DataMember]
         public string URL { get; set; }
 
+        [DataMember]
+        public string ThumbnailImage { get; set; }
+
         public LeaderboardListResponseItem() { }
 
         public LeaderboardListResponseItem(Reviews review)
@@ -23,6 +26,7 @@ namespace thewhiskeystudy.Objects
             Category = review.Category;
             Name = review.Title;
             URL = review.URL;
+            ThumbnailImage = $"{review.Title.ToLower().Replace(" ", "")}.png";
         }
     }
 }

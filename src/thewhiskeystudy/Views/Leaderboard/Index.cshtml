@@ -10,12 +10,17 @@
 {
     <h3>@category</h3>
 
-    @for (var x = 0; x < Model.Where(a => a.Category == category).ToList().Count; x++)
-    {
-        var review = Model.Where(a => a.Category == category).ToList()[x];
+    <div class="leaderboardCategoryContainer">
+        @for (var x = 0; x < Model.Where(a => a.Category == category).ToList().Count; x++)
+        {
+            var review = Model.Where(a => a.Category == category).ToList()[x];
 
-        var index = x + 1;
+            var index = x + 1;
 
-        <span>@index. <a href="@review.URL">@review.Name</a></span>
-    }
+            <div class="leaderboardContainer">
+                <span>@index. <a href="@review.URL">@review.Name</a></span><br/>
+                <img src="images/thumbnails/@review.ThumbnailImage"/>
+            </div>
+        }
+    </div>
 }

@@ -45,3 +45,24 @@ footer {
     text-align:center;
     font-weight: bold;
 }
+
+.leaderboardCategoryContainer {
+    width: 100%;    
+}
+
+.leaderboardContainer {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    width: 300px;
+    float: left;
+    margin-left: 10px;
+}
+
+.leaderboardContainer span {
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.leaderboardContainer img {
+    padding-left: 10px;
+}

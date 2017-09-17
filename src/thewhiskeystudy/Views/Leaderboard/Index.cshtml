@@ -19,7 +19,16 @@
 
             <div class="leaderboardContainer">
                 <span>@index. <a href="@review.URL">@review.Name</a></span><br/>
-                <img src="images/thumbnails/@review.ThumbnailImage"/>
+                
+                <img style="float: left" src="images/thumbnails/@review.ThumbnailImage"/>
+            
+                <div style="float: left; width: 100px">
+                    <span class="labelHeader">Price</span>
+                    <span class="labelValue">$@review.Price</span>
+                 
+                    <span class="labelHeader">Status</span>
+                    <span class="labelValue">@review.Status</span>
+                </div>
             </div>
         }
     </div>

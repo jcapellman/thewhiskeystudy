@@ -13,5 +13,11 @@ namespace thewhiskeystudy.DAL.Tables
         public Categories Category { get; set; }
 
         public double OverallScore { get; set; }
+
+        public int YearReleased { get; set; }
+
+        public Obtainability ObtainabilityStatus { get; set; }
+
+        public double Price { get; set; }
     }
 }

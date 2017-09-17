@@ -23,7 +23,7 @@ namespace thewhiskeystudy.Objects
         public double Price { get; set; }
 
         [DataMember]
-        public Obtainability ObtainabilityStatus { get; set; }
+        public string Status { get; set; }
 
         [DataMember]
         public double Rating { get; set; }
@@ -37,7 +37,7 @@ namespace thewhiskeystudy.Objects
             URL = review.URL;
             ThumbnailImage = $"{review.Title.ToLower().Replace(" ", "")}.png";
             Price = review.Price;
-            ObtainabilityStatus = review.ObtainabilityStatus;
+            Status = review.ObtainabilityStatus.ToString().Replace("_", " ");
             Rating = review.OverallScore;
         }
     }

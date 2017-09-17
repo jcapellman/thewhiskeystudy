@@ -12,9 +12,10 @@ using thewhiskeystudy.Enums;
 namespace thewhiskeystudy.Migrations
 {
     [DbContext(typeof(DBFactory))]
-    partial class DBFactoryModelSnapshot : ModelSnapshot
+    [Migration("20170917024819_Additional columns to Reviews")]
+    partial class AdditionalcolumnstoReviews
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

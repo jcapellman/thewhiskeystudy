@@ -72,6 +72,11 @@ footer {
     width: 100px;
 }
 
+.leaderboardContainer .additionalInformation {
+    float: left;
+    width: 100px;
+}
+
 .labelHeader {
     font-weight: bold;
     text-transform: uppercase;

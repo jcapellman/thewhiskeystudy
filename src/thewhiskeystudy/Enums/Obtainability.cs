@@ -2,7 +2,7 @@
 {
     public enum Obtainability
     {
-        Readily_Available,
+        Available,
         Rare,
         Limited_Release
     }

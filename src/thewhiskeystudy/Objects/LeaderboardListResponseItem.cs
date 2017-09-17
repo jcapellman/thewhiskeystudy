@@ -19,6 +19,15 @@ namespace thewhiskeystudy.Objects
         [DataMember]
         public string ThumbnailImage { get; set; }
 
+        [DataMember]
+        public double Price { get; set; }
+
+        [DataMember]
+        public Obtainability ObtainabilityStatus { get; set; }
+
+        [DataMember]
+        public double Rating { get; set; }
+
         public LeaderboardListResponseItem() { }
 
         public LeaderboardListResponseItem(Reviews review)
@@ -27,6 +36,9 @@ namespace thewhiskeystudy.Objects
             Name = review.Title;
             URL = review.URL;
             ThumbnailImage = $"{review.Title.ToLower().Replace(" ", "")}.png";
+            Price = review.Price;
+            ObtainabilityStatus = review.ObtainabilityStatus;
+            Rating = review.OverallScore;
         }
     }
 }

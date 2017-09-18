@@ -14,8 +14,13 @@ h1, h3 {
     font-weight: bold;
 }
 
+a {
+    text-transform: uppercase;
+    color: #FFF;
+}
+
 a:focus, a:visited, a:hover {
-    color: #000;
+    color: #FFF;
     text-decoration: none;
 }
 
@@ -53,17 +58,26 @@ footer {
 .leaderboardContainer {
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 5px;
-    width: 300px;
+    width: 400px;
     float: left;
     margin-left: 10px;
     height: 160px;
     margin-top: 10px;
 }
 
+.leaderboardContainer a {
+    font-size: 16px;
+}
+
 .leaderboardContainer span {
     padding-left: 10px;
     padding-top: 5px;
     color: white;
+}
+
+.leaderboardContainer .Ranking {
+    font-size: 30px;
+    color: Gold;
 }
 
 .leaderboardContainer img {
@@ -78,9 +92,9 @@ footer {
 }
 
 .labelHeader {
-    font-weight: bold;
+    font-weight: bolder;
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: 12px;
     color: Black !important;
 }
 

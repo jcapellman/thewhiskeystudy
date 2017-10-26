@@ -9,11 +9,11 @@ namespace thewhiskeystudy.Controllers
     [Route("api/API")]
     public class APIController : Controller
     {
-        public void AddReview(ReviewCreationRequestItem requestItem)
+        public async void AddReview(ReviewCreationRequestItem requestItem)
         {
             var db = new DBManager();
 
-            db.AddReview(requestItem);
+            await db.AddReviewAsync(requestItem);
         }
     }
 }

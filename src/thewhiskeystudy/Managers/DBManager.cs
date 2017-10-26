@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 using thewhiskeystudy.Objects;
 using thewhiskeystudy.DAL;
@@ -25,7 +26,7 @@ namespace thewhiskeystudy.Managers
             }
         }
 
-        public void AddReview(ReviewCreationRequestItem requestItem)
+        public async Task<bool> AddReviewAsync(ReviewCreationRequestItem requestItem)
         {
             using (var db = new DBFactory())
             {
@@ -41,7 +42,8 @@ namespace thewhiskeystudy.Managers
                 };
 
                 db.Reviews.Add(review);
-                db.SaveChanges();
+
+                return await db.SaveChangesAsync() > 0;                
             }
         }
     }

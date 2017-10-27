@@ -4,3 +4,6 @@ obj/
 *.lock.json
 /Properties/PublishProfiles
 packages/
+src/thewhiskystudy/
+bower_components/*
+bower_components

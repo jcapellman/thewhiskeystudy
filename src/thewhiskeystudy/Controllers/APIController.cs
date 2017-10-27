@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Mvc;
 
 using thewhiskeystudy.Managers;
 using thewhiskeystudy.Objects;
@@ -9,11 +11,11 @@ namespace thewhiskeystudy.Controllers
     [Route("api/API")]
     public class APIController : Controller
     {
-        public async void AddReview(ReviewCreationRequestItem requestItem)
+        public async Task<bool> AddReview(ReviewCreationRequestItem requestItem)
         {
             var db = new DBManager();
 
-            await db.AddReviewAsync(requestItem);
+            return await db.AddReviewAsync(requestItem);
         }
     }
 }

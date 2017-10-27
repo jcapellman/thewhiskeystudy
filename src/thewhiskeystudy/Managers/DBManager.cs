@@ -41,7 +41,7 @@ namespace thewhiskeystudy.Managers
                     YearReleased = requestItem.YearReleased
                 };
 
-                db.Reviews.Add(review);
+                await db.Reviews.AddAsync(review);
 
                 return await db.SaveChangesAsync() > 0;                
             }

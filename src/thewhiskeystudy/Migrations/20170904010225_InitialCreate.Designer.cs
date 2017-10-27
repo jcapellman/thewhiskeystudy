@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
-using thewhiskeystudy.DAL;
-using thewhiskeystudy.Enums;
+using thewhiskeystudy.lib.DAL;
+using thewhiskeystudy.lib.Enums;
 
 namespace thewhiskeystudy.Migrations
 {

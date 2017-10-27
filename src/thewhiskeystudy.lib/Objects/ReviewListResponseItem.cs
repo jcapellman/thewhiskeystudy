@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-using thewhiskeystudy.DAL.Tables;
+using thewhiskeystudy.lib.DAL.Tables;
 
-namespace thewhiskeystudy.Objects
+namespace thewhiskeystudy.lib.Objects
 {
     [DataContract]
     public class ReviewListResponseItem

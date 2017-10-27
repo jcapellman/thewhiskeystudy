@@ -1,8 +1,8 @@
 ﻿using System.Runtime.Serialization;
 
-using thewhiskeystudy.Enums;
+using thewhiskeystudy.lib.Enums;
 
-namespace thewhiskeystudy.Objects
+namespace thewhiskeystudy.lib.Objects
 {
     [DataContract]
     public class ReviewCreationRequestItem

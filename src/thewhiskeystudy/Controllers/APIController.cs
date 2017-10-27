@@ -2,8 +2,8 @@
 
 using Microsoft.AspNetCore.Mvc;
 
+using thewhiskeystudy.lib.Objects;
 using thewhiskeystudy.Managers;
-using thewhiskeystudy.Objects;
 
 namespace thewhiskeystudy.Controllers
 {

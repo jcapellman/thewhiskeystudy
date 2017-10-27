@@ -1,4 +1,4 @@
-﻿namespace thewhiskeystudy.Enums
+﻿namespace thewhiskeystudy.lib.Enums
 {
     public enum Categories
     {

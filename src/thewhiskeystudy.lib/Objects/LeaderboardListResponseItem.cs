@@ -1,9 +1,9 @@
 ﻿using System.Runtime.Serialization;
 
-using thewhiskeystudy.DAL.Tables;
-using thewhiskeystudy.Enums;
+using thewhiskeystudy.lib.DAL.Tables;
+using thewhiskeystudy.lib.Enums;
 
-namespace thewhiskeystudy.Objects
+namespace thewhiskeystudy.lib.Objects
 {
     public class LeaderboardListResponseItem
     {

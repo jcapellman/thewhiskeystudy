@@ -1,6 +1,6 @@
-﻿using thewhiskeystudy.Enums;
+﻿using thewhiskeystudy.lib.Enums;
 
-namespace thewhiskeystudy.DAL.Tables
+namespace thewhiskeystudy.lib.DAL.Tables
 {
     public class Reviews : BaseTable
     {

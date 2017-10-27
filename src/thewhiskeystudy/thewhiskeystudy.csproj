@@ -28,4 +28,8 @@
     <Folder Include="Views\Reviews\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\thewhiskeystudy.lib\thewhiskeystudy.lib.csproj" />
+  </ItemGroup>
+
 </Project>

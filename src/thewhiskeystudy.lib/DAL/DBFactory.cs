@@ -5,9 +5,9 @@ using System.Linq.Expressions;
 
 using Microsoft.EntityFrameworkCore;
 
-using thewhiskeystudy.DAL.Tables;
+using thewhiskeystudy.lib.DAL.Tables;
 
-namespace thewhiskeystudy.DAL
+namespace thewhiskeystudy.lib.DAL
 {
     public class DBFactory : DbContext
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace thewhiskeystudy.DAL.Tables
+namespace thewhiskeystudy.lib.DAL.Tables
 {
     public class BaseTable
     {

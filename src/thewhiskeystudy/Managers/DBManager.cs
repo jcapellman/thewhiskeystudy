@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-using thewhiskeystudy.Objects;
-using thewhiskeystudy.DAL;
-using thewhiskeystudy.DAL.Tables;
+using thewhiskeystudy.lib.DAL;
+using thewhiskeystudy.lib.DAL.Tables;
+using thewhiskeystudy.lib.Objects;
 
 namespace thewhiskeystudy.Managers
 {

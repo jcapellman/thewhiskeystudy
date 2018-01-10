@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using thewhiskeystudy.lib.DAL;
+
 namespace thewhiskeystudy
 {
     public class Startup
@@ -22,6 +24,11 @@ namespace thewhiskeystudy
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            using (var dbFactory = new DBFactory())
+            {
+                dbFactory.Database.EnsureCreated();
+            }
+
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto

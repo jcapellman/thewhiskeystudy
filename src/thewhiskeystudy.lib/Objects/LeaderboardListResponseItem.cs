@@ -1,44 +1,39 @@
 ﻿using System.Runtime.Serialization;
 
-using thewhiskeystudy.lib.DAL.Tables;
-using thewhiskeystudy.lib.Enums;
-
 namespace thewhiskeystudy.lib.Objects
 {
     public class LeaderboardListResponseItem
     {
         [DataMember]
-        public Categories Category { get; set; }
-
-        [DataMember]
         public string Name { get; set; }
 
         [DataMember]
-        public string URL { get; set; }
+        public string Type { get; set; }
 
         [DataMember]
-        public string ThumbnailImage { get; set; }
+        public string Aged { get; set; }
 
         [DataMember]
-        public double Price { get; set; }
+        public float Rating { get; set; }
 
         [DataMember]
-        public string Status { get; set; }
+        public float ABV { get; set; }
 
         [DataMember]
-        public double Rating { get; set; }
+        public int EaseToFind { get; set; }
+
+        [DataMember]
+        public string TastingNotes { get; set; }
+
+        [DataMember]
+        public string Nose { get; set; }
+        
+        [DataMember]
+        public string Distillery { get; set; }
+
+        [DataMember]
+        public int Price { get; set; }
 
         public LeaderboardListResponseItem() { }
-
-        public LeaderboardListResponseItem(Reviews review)
-        {
-            Category = review.Category;
-            Name = review.Title;
-            URL = review.URL;
-            ThumbnailImage = $"{review.Title.ToLower().Replace(" ", "")}.png";
-            Price = review.Price;
-            Status = review.ObtainabilityStatus.ToString().Replace("_", " ");
-            Rating = review.OverallScore;
-        }
     }
 }

@@ -24,11 +24,6 @@ namespace thewhiskeystudy
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            using (var dbFactory = new DBFactory())
-            {
-                dbFactory.Database.EnsureCreated();
-            }
-
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto

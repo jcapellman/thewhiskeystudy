@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+
+using CsvHelper;
 
 using thewhiskeystudy.lib.DAL;
 using thewhiskeystudy.lib.DAL.Tables;
@@ -20,9 +24,25 @@ namespace thewhiskeystudy.Managers
 
         public List<LeaderboardListResponseItem> GetLeaderboard()
         {
-            using (var db = new DBFactory())
-            {
-                return db.SelectMany<Reviews>().OrderBy(a => a.Category).ThenByDescending(a => a.OverallScore).Select(a => new LeaderboardListResponseItem(a)).ToList();
+            using (var sr = new StreamReader("Whiskey DB.csv")) { 
+                var csv = new CsvReader(sr);
+
+                var records = new List<LeaderboardListResponseItem>();
+
+                while (csv.Read())
+                {
+                    try
+                    {
+                        var record = csv.GetRecord<LeaderboardListResponseItem>();
+
+                        records.Add(record);
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+
+                return records;
             }
         }
 

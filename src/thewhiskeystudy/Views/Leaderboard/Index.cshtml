@@ -1,4 +1,4 @@
-﻿@model List<thewhiskeystudy.Objects.LeaderboardListResponseItem>
+﻿@model List<thewhiskeystudy.lib.Objects.LeaderboardListResponseItem>
 
 @{
     ViewBag.Title = "Leaderboard";
@@ -6,30 +6,47 @@
 
 <h1>Leaderboard</h1>
 
-@foreach (var category in Model.GroupBy(a => a.Category).Select(b => b.Key))
+@foreach (var category in Model.GroupBy(a => a.Type).Select(b => b.Key))
 {
     <h3>@category</h3>
 
-    <div class="leaderboardCategoryContainer">
-        @for (var x = 0; x < Model.Where(a => a.Category == category).ToList().Count; x++)
-        {
-            var review = Model.Where(a => a.Category == category).ToList()[x];
+    <table class="table table-bordered" data-provide="datagrid">
+        <thead>
+            <tr>
+                <td>Ranking</td>
+                <td>Name</td>
+                <td>Distillery</td>
+                <td>Aged</td>
+                <td>ABV</td>
+                <td>Price (USD)</td>
+                <td>Rating</td>
+                <td>Ease to Find</td>
+                <td>Nose</td>
+                <td>Tasting Notes</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{ int index = 0; }
 
-            var index = x + 1;
+            @foreach (var review in Model.Where(a => a.Type == category).OrderByDescending(b => b.Rating))
+            {
+                <span style="display: none">
+                    @(++index)
+                </span>
 
-            <div class="leaderboardContainer">
-                <span class="Ranking">#@index</span> <a href="@review.URL">@review.Name</a><br/>
-
-                <img src="images/thumbnails/@review.ThumbnailImage" alt="@review.Name" />
-
-                <div class="additionalInformation">
-                    <span class="labelHeader">Price</span>
-                    <span class="labelValue">$@review.Price</span>
-                 
-                    <span class="labelHeader">Status</span>
-                    <span class="labelValue">@review.Status</span>
-                </div>
-            </div>
-        }
-    </div>
+                <tr>
+                    <td>@index</td>
+                    <td>@review.Name</td>
+                    <td>@review.Distillery</td>
+                    <td>@review.Aged</td>
+                    <td>@review.ABV</td>
+                    <td>$@review.Price</td>
+                    <td>@review.Rating</td>
+                    <td>@review.EaseToFind</td>
+                    <td>@review.Nose</td>
+                    <td>@review.TastingNotes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }

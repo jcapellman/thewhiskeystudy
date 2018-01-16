@@ -26,14 +26,10 @@
             </tr>
         </thead>
         <tbody>
-            @{ int index = 0; }
+            @{ int index = 1; }
 
             @foreach (var review in Model.Where(a => a.Type == category).OrderByDescending(b => b.Rating))
             {
-                <span style="display: none">
-                    @(++index)
-                </span>
-
                 <tr>
                     <td>@index</td>
                     <td>@review.Name</td>
@@ -46,6 +42,8 @@
                     <td>@review.Nose</td>
                     <td>@review.TastingNotes</td>
                 </tr>
+
+                index++;
             }
         </tbody>
     </table>

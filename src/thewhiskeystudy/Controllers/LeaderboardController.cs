@@ -9,6 +9,6 @@ namespace thewhiskeystudy.Controllers
     [ResponseCache(Duration = Int32.MaxValue)]
     public class LeaderboardController : Controller
     {
-        public IActionResult Index() => View(new DBManager().GetLeaderboard());
+        public IActionResult Index() => View(new DBManager().GetDatabase());
     }
 }

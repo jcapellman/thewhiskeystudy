@@ -1,4 +1,6 @@
-﻿@{
+﻿@model SuggestionFormModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,6 +8,56 @@
     <img src="~/images/headerlogo.png" class="img-responsive center-block"  />
 
     <div class="body-text">
-        The Whiskey Study was created to help document my adventure into Whiskey, specifically finding the perfect bottle.  For several months now I have kept a list of my favorites in numerical order, it became quickly apparant that comparing a $25 bottle to a $200+ bottle wasn't really the best way to go about it.  Just like you would not compare a Honda Civic to a Porsche 911, I wanted to go a step further.  Thus bringing me to creating this site.  As time goes on, full fledged reviews will be posted along with an ever evolving leaderboard.
+        The Whiskey Study was created to help document my adventure into Whiskey, specifically helping folks finding the perfect bottle.<br/><br/>
+
+        <h3>Whiskey Suggestion</h3>
+        <p>Fill in the form below to get suggestions based on your likes/dislikes</p>
+        
+        <div class="form-group">
+
+        <label class="col-sm-2"></label>
+            <div class="col-sm-10">        
+                <form asp-controller="Suggestion" asp-action="Index" method="post">
+                    <div class="checkbox">
+
+                        @Html.CheckBoxFor(a => a.LikesRye)
+                        @Html.LabelFor(a => a.LikesRye)
+                    </div>
+
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(a => a.LikesCaramel)
+                        @Html.LabelFor(a => a.LikesCaramel)
+                    </div>
+
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(a => a.LikesSmooth)
+                        @Html.LabelFor(a => a.LikesSmooth)
+                    </div>
+
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(a => a.LikesHighProof)
+                        @Html.LabelFor(a => a.LikesHighProof)
+                    </div>
+
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(a => a.LikesSweet)
+                        @Html.LabelFor(a => a.LikesSweet)
+                    </div>
+
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(a => a.WantsReadilyAvailable)
+                        @Html.LabelFor(a => a.WantsReadilyAvailable)
+                    </div>
+
+                    <div class="checkbox">
+                        @Html.TextBoxFor(a => a.MaxPrice)
+                        @Html.LabelFor(a => a.MaxPrice)
+                    </div>
+
+                    <button type="submit" value="Submit" class="btn-primary">Submit</button>
+
+                </form>
+            </div>
+        </div>
     </div>
 </div>

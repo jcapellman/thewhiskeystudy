@@ -2,43 +2,32 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-
 using CsvHelper;
 
-using thewhiskeystudy.lib.DAL;
-using thewhiskeystudy.lib.DAL.Tables;
 using thewhiskeystudy.lib.Objects;
 
 namespace thewhiskeystudy.Managers
 {
     public class DBManager : BaseManager
     {
-        public List<ReviewListResponseItem> GetReviewList()
-        {
-            using (var db = new DBFactory())
-            {
-                return db.SelectMany<Reviews>().Select(b => new ReviewListResponseItem(b)).ToList();
-            }
-        }
-
-        public List<LeaderboardListResponseItem> GetLeaderboard()
+        public List<RawDatabaseItem> GetDatabase()
         {
             using (var sr = new StreamReader("Whiskey DB.csv")) { 
                 var csv = new CsvReader(sr);
 
-                var records = new List<LeaderboardListResponseItem>();
+                var records = new List<RawDatabaseItem>();
 
                 while (csv.Read())
                 {
                     try
                     {
-                        var record = csv.GetRecord<LeaderboardListResponseItem>();
+                        var record = csv.GetRecord<RawDatabaseItem>();
 
                         records.Add(record);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        var error = ex;
                     }
                 }
 
@@ -46,25 +35,18 @@ namespace thewhiskeystudy.Managers
             }
         }
 
-        public async Task<bool> AddReviewAsync(ReviewCreationRequestItem requestItem)
+        public IQueryable<RawDatabaseItem> GetSuggestions(bool wantsReadilyAvailable, bool likesCaramel, bool likesSpice, double? maxPrice, bool likesHighProof, bool likesSmooth, bool likesSweet)
         {
-            using (var db = new DBFactory())
+            var query = GetDatabase().AsQueryable();
+
+            if (maxPrice.HasValue)
             {
-                var review = new Reviews
-                {
-                    Body = requestItem.Body,
-                    Category = requestItem.Category,
-                    ObtainabilityStatus = requestItem.ObtainabilityStatus,
-                    OverallScore = requestItem.OverallScore,
-                    Price = requestItem.Price,
-                    Title = requestItem.Title,
-                    YearReleased = requestItem.YearReleased
-                };
-
-                await db.Reviews.AddAsync(review);
-
-                return await db.SaveChangesAsync() > 0;                
+                query = query.Where(a => a.Price <= maxPrice.Value);
             }
+
+            query = likesHighProof ? query.Where(a => a.ABV > 50.0f) : query.Where(a => a.ABV <= 50.0f);
+
+            return query.Where(a => a.EasyToFind == wantsReadilyAvailable && a.HasCaramelNose == likesCaramel && a.HasCaramelTaste == likesCaramel && a.HasSpiceTaste == likesSpice && a.HasSmoothTaste == likesSmooth && a.HasSweetTaste == likesSweet);
         }
     }
 }

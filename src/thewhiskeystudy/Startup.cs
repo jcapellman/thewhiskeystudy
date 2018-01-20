@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-using thewhiskeystudy.lib.DAL;
-
 namespace thewhiskeystudy
 {
     public class Startup

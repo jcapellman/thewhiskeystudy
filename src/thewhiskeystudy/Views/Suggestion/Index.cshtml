@@ -1,0 +1,50 @@
+﻿@model List<thewhiskeystudy.lib.Objects.SuggestionModelItem>
+
+@{
+    ViewData["Title"] = "Suggestion";
+}
+
+<div class="row" style="margin-top: 20px;">
+    <img src="~/images/headerlogo.png" class="img-responsive center-block"  />
+
+    <div class="body-text">
+        <table class="table table-bordered" data-provide="datagrid">
+            <thead>
+            <tr>
+                <td>Ranking</td>
+                <td>Name</td>
+                <td>Aged</td>
+                <td>ABV</td>
+                <td>Price (USD)</td>
+                <td>Nose</td>
+                <td>Tasting Notes</td>
+                <td>Worth It?</td>
+                <td>Easy to Find?</td>
+                <td>Additional Notes</td>
+            </tr>
+            </thead>
+
+            <tbody>
+            @{ int index = 1; }
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@index</td>
+                    <td>@item.Name</td>
+                    <td>@item.Aged</td>
+                    <td>@item.ABV</td>
+                    <td>$@item.Price</td>
+                    <td>@item.Nose</td>
+                    <td>@item.TastingNotes</td>
+                    <td>@item.WorthIt</td>
+                    <td>@item.EasyToFind</td>
+                    <td>@item.AdditionalNotes</td>
+                </tr>
+
+                index++;
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

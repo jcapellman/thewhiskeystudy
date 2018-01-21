@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+using thewhiskeystudy.lib.Enums;
+
 namespace thewhiskeystudy.Models
 {
     public class SuggestionFormModel
@@ -8,21 +10,21 @@ namespace thewhiskeystudy.Models
         public double? MaxPrice { get; set; }
 
         [Display(Name = "Like Rye/Spice Flavor?")]
-        public bool LikesRye { get; set; }
+        public SuggestionFormChoices LikesRye { get; set; }
 
         [Display(Name = "Like Smoothness?")]
-        public bool LikesSmooth { get; set; }
+        public SuggestionFormChoices LikesSmooth { get; set; }
 
         [Display(Name="Like Caramel flavor?")]
-        public bool LikesCaramel { get; set; }
+        public SuggestionFormChoices LikesCaramel { get; set; }
 
         [Display(Name="Want it to be easy to find?")]
-        public bool WantsReadilyAvailable { get; set; }
+        public SuggestionFormChoices WantsReadilyAvailable { get; set; }
 
         [Display(Name = "Like Sweet flavor?")]
-        public bool LikesSweet { get; set; }  
+        public SuggestionFormChoices LikesSweet { get; set; }  
         
         [Display(Name = "Want it higher proof?")]
-        public bool LikesHighProof { get; set; }
+        public SuggestionFormChoices LikesHighProof { get; set; }
     }
 }

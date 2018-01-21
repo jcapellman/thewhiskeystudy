@@ -2,6 +2,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 
+using thewhiskeystudy.lib.Enums;
 using thewhiskeystudy.lib.Objects;
 using thewhiskeystudy.Managers;
 using thewhiskeystudy.Models;
@@ -25,11 +26,26 @@ namespace thewhiskeystudy.Controllers
                 AdditionalNotes = a.AdditionalNotes,
                 Aged = a.Aged,
                 ABV = a.ABV,
-                WorthIt = a.WorthIt
-            }).ToList();
+                WorthIt = a.WorthIt,
+                Rating = a.Rating
+            });
 
-
-            return View(finalResults);
+            if (model.MostImportantAspect == MostImportantSuggestionChoices.NO_OPINION)
+            {
+                return View(finalResults.ToList());    
+            }
+                
+            switch (model.MostImportantAspect)
+            {
+                case MostImportantSuggestionChoices.LOW_PRICE:
+                    finalResults = finalResults.OrderBy(a => a.Price);
+                    break;
+                case MostImportantSuggestionChoices.QUALITY:
+                    finalResults = finalResults.OrderByDescending(a => a.Rating);
+                    break;
+            }
+            
+            return View(finalResults.ToList());
         }
     }
 }

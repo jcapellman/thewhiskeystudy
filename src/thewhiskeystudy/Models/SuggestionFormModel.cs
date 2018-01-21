@@ -26,5 +26,8 @@ namespace thewhiskeystudy.Models
         
         [Display(Name = "Want it higher proof?")]
         public SuggestionFormChoices LikesHighProof { get; set; }
+
+        [Display(Name = "Most Important to you?")]
+        public MostImportantSuggestionChoices MostImportantAspect { get; set; }
     }
 }

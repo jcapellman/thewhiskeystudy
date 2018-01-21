@@ -56,7 +56,10 @@ footer {
 }
 
 .SuggestionFormContainer .entryLabel {    
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    font-size: smaller;
+    text-transform: Uppercase;
+    font-weight: 800;
 }
 
 .SuggestionFormContainer .entry {

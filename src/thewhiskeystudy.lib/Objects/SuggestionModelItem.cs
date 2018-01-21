@@ -16,6 +16,8 @@
 
         public int Price { get; set; }
 
+        public double Rating { get; set; }
+
         public bool WorthIt { get; set; }
 
         public string AdditionalNotes { get; set; }

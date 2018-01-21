@@ -17,7 +17,7 @@
             <div class="row">                       
                 <form asp-controller="Suggestion" asp-action="Index" method="post">
                     <div class="SuggestionFormContainer">
-                        <div class="labelHeader">
+                        <div class="entryLabel">
                             @Html.LabelFor(a => a.LikesRye)
                         </div>
                         <div class="entry">
@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="SuggestionFormContainer">
-                        <div class="labelHeader">
+                        <div class="entryLabel">
                             @Html.LabelFor(a => a.LikesCaramel)
                         </div>
                         <div class="entry">
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="SuggestionFormContainer">
-                        <div class="labelHeader">
+                        <div class="entryLabel">
                             @Html.LabelFor(a => a.LikesSmooth)
                         </div>
                         <div class="entry">
@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="SuggestionFormContainer">
-                        <div class="labelHeader">
+                        <div class="entryLabel">
                             @Html.LabelFor(a => a.LikesHighProof)
                         </div>
                         <div class="entry">
@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="SuggestionFormContainer">
-                        <div class="labelHeader">
+                        <div class="entryLabel">
                             @Html.LabelFor(a => a.LikesSweet)
                         </div>
                         <div class="entry">
@@ -62,16 +62,25 @@
                     </div>
 
                     <div class="SuggestionFormContainer">
-                        <div class="labelHeader">
+                        <div class="entryLabel">
                             @Html.LabelFor(a => a.WantsReadilyAvailable)
                         </div>
                         <div class="entry">
                             <select asp-for="@Model.WantsReadilyAvailable" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>
                         </div>
                     </div>
+                    
+                    <div class="SuggestionFormContainer">
+                        <div class="entryLabel">
+                            @Html.LabelFor(a => a.MostImportantAspect)
+                        </div>
+                        <div class="entry">
+                            <select asp-for="@Model.MostImportantAspect" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.MostImportantSuggestionChoices>()" class="form-control"></select>
+                        </div>
+                    </div>
 
                     <div class="SuggestionFormContainer">
-                        <div class="labelHeader">
+                        <div class="entryLabel">
                             @Html.LabelFor(a => a.MaxPrice)
                         </div>
                         <div class="entry">

@@ -1,4 +1,6 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Data;
+using System.Runtime.Serialization;
 
 namespace thewhiskeystudy.lib.Objects
 {
@@ -23,7 +25,7 @@ namespace thewhiskeystudy.lib.Objects
         public bool EasyToFind { get; set; }
 
         [DataMember]
-        public float EaseToFind { get; set; }
+        public double EaseToFind { get; set; }
 
         [DataMember]
         public bool HasSpiceTaste { get; set; }
@@ -62,5 +64,30 @@ namespace thewhiskeystudy.lib.Objects
         public string AdditionalNotes { get; set; }
 
         public RawDatabaseItem() { }
+
+        private const string TRUESTR = "TRUE";
+
+        public RawDatabaseItem(DataRow dataRow)
+        {
+            Name = dataRow[0].ToString();
+            Type = dataRow[1].ToString();
+            Aged = dataRow[2].ToString();
+            Rating = dataRow[3] == DBNull.Value ? 0 : Convert.ToDouble(dataRow[3]);
+            ABV = dataRow[4] == DBNull.Value ? 0 : Convert.ToDouble(dataRow[4]);
+            EasyToFind = dataRow[5].ToString() == TRUESTR;
+            EaseToFind = dataRow[6] == DBNull.Value ? 0 : Convert.ToDouble(dataRow[6]);
+            HasSpiceTaste = dataRow[7].ToString() == TRUESTR;
+            HasSmoothTaste = dataRow[8].ToString() == TRUESTR;
+            HasSweetTaste = dataRow[9].ToString() == TRUESTR;
+            HasCaramelTaste = dataRow[10].ToString() == TRUESTR;
+            TastingNotes = dataRow[11].ToString();
+            HasCaramelNose = dataRow[12].ToString() == TRUESTR;
+            Nose = dataRow[13].ToString();
+            Distillery = dataRow[14].ToString();
+            Price = dataRow[15] == DBNull.Value ? 0 : Convert.ToInt32(dataRow[15]);
+            WorthIt = dataRow[16].ToString() == TRUESTR;
+            Value = dataRow[17] == DBNull.Value ? 0 : Convert.ToInt32(dataRow[17]);
+            AdditionalNotes = dataRow[18].ToString();
+        }
     }
 }

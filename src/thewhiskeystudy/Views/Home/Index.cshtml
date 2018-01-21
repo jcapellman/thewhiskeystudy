@@ -4,59 +4,83 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="row" style="margin-top: 20px;">
+<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
     <img src="~/images/headerlogo.png" class="img-responsive center-block"  />
 
     <div class="body-text">
-        The Whiskey Study was created to help document my adventure into Whiskey, specifically helping folks finding the perfect bottle.<br/><br/>
+        <p class="text-center">The Whiskey Study was created to help document my adventure into Whiskey, specifically helping folks finding the perfect bottle.</p>
 
-        <h3>Whiskey Suggestion</h3>
-        <p>Fill in the form below to get suggestions based on your likes/dislikes</p>
+        <h3 class="text-center">Whiskey Suggestion</h3>
+        <p class="text-center">Fill in the form below to get suggestions based on your likes/dislikes</p>
         
         <div class="form-group">
-
-        <label class="col-sm-2"></label>
-            <div class="col-sm-10">        
+            <div class="row">                       
                 <form asp-controller="Suggestion" asp-action="Index" method="post">
-                    <div class="checkbox">
-
-                        @Html.CheckBoxFor(a => a.LikesRye)
-                        @Html.LabelFor(a => a.LikesRye)
+                    <div class="SuggestionFormContainer">
+                        <div class="labelHeader">
+                            @Html.LabelFor(a => a.LikesRye)
+                        </div>
+                        <div class="entry">
+                            <select asp-for="@Model.LikesRye" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>
+                        </div>
                     </div>
 
-                    <div class="checkbox">
-                        @Html.CheckBoxFor(a => a.LikesCaramel)
-                        @Html.LabelFor(a => a.LikesCaramel)
+                    <div class="SuggestionFormContainer">
+                        <div class="labelHeader">
+                            @Html.LabelFor(a => a.LikesCaramel)
+                        </div>
+                        <div class="entry">
+                            <select asp-for="@Model.LikesCaramel" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>
+                        </div>
                     </div>
 
-                    <div class="checkbox">
-                        @Html.CheckBoxFor(a => a.LikesSmooth)
-                        @Html.LabelFor(a => a.LikesSmooth)
+                    <div class="SuggestionFormContainer">
+                        <div class="labelHeader">
+                            @Html.LabelFor(a => a.LikesSmooth)
+                        </div>
+                        <div class="entry">
+                            <select asp-for="@Model.LikesSmooth" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>
+                        </div>
                     </div>
 
-                    <div class="checkbox">
-                        @Html.CheckBoxFor(a => a.LikesHighProof)
-                        @Html.LabelFor(a => a.LikesHighProof)
+                    <div class="SuggestionFormContainer">
+                        <div class="labelHeader">
+                            @Html.LabelFor(a => a.LikesHighProof)
+                        </div>
+                        <div class="entry">
+                            <select asp-for="@Model.LikesHighProof" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>
+                        </div>
                     </div>
 
-                    <div class="checkbox">
-                        @Html.CheckBoxFor(a => a.LikesSweet)
-                        @Html.LabelFor(a => a.LikesSweet)
+                    <div class="SuggestionFormContainer">
+                        <div class="labelHeader">
+                            @Html.LabelFor(a => a.LikesSweet)
+                        </div>
+                        <div class="entry">
+                            <select asp-for="@Model.LikesSweet" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>
+                        </div>
                     </div>
 
-                    <div class="checkbox">
-                        @Html.CheckBoxFor(a => a.WantsReadilyAvailable)
-                        @Html.LabelFor(a => a.WantsReadilyAvailable)
+                    <div class="SuggestionFormContainer">
+                        <div class="labelHeader">
+                            @Html.LabelFor(a => a.WantsReadilyAvailable)
+                        </div>
+                        <div class="entry">
+                            <select asp-for="@Model.WantsReadilyAvailable" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>
+                        </div>
                     </div>
 
-                    <div class="checkbox">
-                        @Html.TextBoxFor(a => a.MaxPrice)
-                        @Html.LabelFor(a => a.MaxPrice)
+                    <div class="SuggestionFormContainer">
+                        <div class="labelHeader">
+                            @Html.LabelFor(a => a.MaxPrice)
+                        </div>
+                        <div class="entry">
+                            <input type="number" asp-for="MaxPrice" class="form-control" />
+                        </div>
                     </div>
 
-                    <button type="submit" value="Submit" class="btn-primary">Submit</button>
-
-                </form>
+                    <button type="submit" value="Submit" class="btn btn-primary center-block">Submit</button>
+                </form>                
             </div>
         </div>
     </div>

@@ -24,6 +24,15 @@ a:focus, a:visited, a:hover {
     text-decoration: none;
 }
 
+.navbar {
+    background-color: black;
+}
+
+.row-fluid {
+    display: flex;
+    align-items: center;
+}
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -98,4 +107,18 @@ footer {
 
 .labelValue {
     color: White;
+}
+
+/* Suggestion Form */
+.SuggestionFormContainer {
+    width: 350px;
+    margin: 0 auto;
+}
+
+.SuggestionFormContainer .entryLabel {    
+    margin-bottom: 10px;
+}
+
+.SuggestionFormContainer .entry {
+    margin-bottom: 15px;
 }

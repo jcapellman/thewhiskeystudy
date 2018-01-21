@@ -65,3 +65,38 @@ footer {
 .SuggestionFormContainer .entry {
     margin-bottom: 15px;
 }
+
+/* Suggestion Listing */
+.SuggestionListingContainer {
+    margin-bottom: 10px;
+    background-color: rgba(0,0,0,.5);
+    border-radius: 5px;
+    color: white;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.SuggestionListingContainer h3 {
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.SuggestionListingContainer .NoteContainer {
+    margin-bottom: 10px;
+}
+
+.SuggestionListingContainer .label {
+    font-weight: bold;
+    font-size: smaller;
+    margin-bottom:5px;
+    color: gold;
+}
+
+.SuggestionListingContainer .labelValue {
+    font-size: medium;
+    font-style: italic;
+    margin-bottom: 5px;
+    padding: .2em .6em .3em;
+}

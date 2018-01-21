@@ -9,44 +9,72 @@
     
     <div class="body-text" style="margin-top: 10px;">
         <a href="/" class="btn btn-link center-block">return to form</a>
+        
+        @if (!Model.Any())
+        {
+            <h3 class="text-center">Sorry no matches were found, please revise your search criteria</h3>
+        }
+        else
+        {
+            <h3 class="text-center">@Model.Count matches were found</h3>
 
-        <table class="table table-bordered" data-provide="datagrid">
-            <thead>
-            <tr>
-                <td>Ranking</td>
-                <td>Name</td>
-                <td>Aged</td>
-                <td>ABV</td>
-                <td>Price (USD)</td>
-                <td>Nose</td>
-                <td>Tasting Notes</td>
-                <td>Worth It?</td>
-                <td>Easy to Find?</td>
-                <td>Additional Notes</td>
-            </tr>
-            </thead>
-
-            <tbody>
-            @{ int index = 1; }
-
-            @foreach (var item in Model)
+            foreach (var item in Model)
             {
-                <tr>
-                    <td>@index</td>
-                    <td>@item.Name</td>
-                    <td>@item.Aged</td>
-                    <td>@item.ABV</td>
-                    <td>$@item.Price</td>
-                    <td>@item.Nose</td>
-                    <td>@item.TastingNotes</td>
-                    <td>@item.WorthIt</td>
-                    <td>@item.EasyToFind</td>
-                    <td>@item.AdditionalNotes</td>
-                </tr>
+            <div class="SuggestionListingContainer">
+                <h3>(@item.Rating / 10) - @item.Name</h3>
 
-                index++;
+                <div style="max-height: 30px;">
+                    <div style="float: left; margin-right: 20px; width: 60px;">
+                        <span class="label">price</span><br />
+                        <span class="labelValue">$@item.Price</span>
+                    </div>
+
+                    <div style="float: left; margin-right: 20px; width: 60px;">
+                        <span class="label">abv</span><br />
+                        <span class="labelValue">@item.ABV%</span>
+                    </div>
+
+                    <div style="float: left; margin-right: 20px; width: 80px;">
+                        <span class="label">aged (yrs)</span><br />
+                        <span class="labelValue">@item.Aged</span>
+                    </div>
+
+                    <div style="float: left; margin-right: 20px;">
+                        <span class="label">easy to find</span><br />
+                        <span class="labelValue">@item.EasyToFind</span>
+                    </div>
+
+                    <div style="float: left;">
+                        <span class="label">worth it</span><br />
+                        <span class="labelValue">@item.WorthIt</span>
+                    </div>
+                </div>
+
+                <br />
+                <br />
+                <br />
+
+                <div class="NoteContainer">
+                    <span class="label">tasting notes</span><br/>
+                    <span class="labelValue">@item.TastingNotes</span>
+                </div>
+                
+                <div class="NoteContainer">
+                    <span class="label">nose notes</span><br />
+                    <span class="labelValue">@item.Nose</span>
+                </div>
+
+                @if (!string.IsNullOrEmpty(item.AdditionalNotes))
+                {
+                    <div class="NoteContainer">
+                        <span class="label">additional notes</span><br />
+                        <span class="labelValue">@item.AdditionalNotes</span>
+                    </div>
+                }
+            </div>  
+                
+            <hr/>
             }
-            </tbody>
-        </table>
+        }
     </div>
 </div>

@@ -23,7 +23,7 @@
             <div class="SuggestionListingContainer">
                 <h3>(@item.Rating / 10) - @item.Name</h3>
 
-                <div style="max-height: 30px;">
+                <div>
                     <div style="float: left; margin-right: 20px; width: 60px;">
                         <span class="label">price</span><br />
                         <span class="labelValue">$@item.Price</span>
@@ -41,12 +41,12 @@
 
                     <div style="float: left; margin-right: 20px;">
                         <span class="label">easy to find</span><br />
-                        <span class="labelValue">@item.EasyToFind</span>
+                        <span class="labelValue">@(item.EasyToFind ? "Yes" : "No")</span>
                     </div>
 
                     <div style="float: left;">
                         <span class="label">worth it</span><br />
-                        <span class="labelValue">@item.WorthIt</span>
+                        <span class="labelValue">@(item.WorthIt ? "Yes" : "No")</span>
                     </div>
                 </div>
 

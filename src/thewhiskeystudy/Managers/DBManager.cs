@@ -1,39 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using CsvHelper;
 
+using Newtonsoft.Json;
+
+using thewhiskeystudy.lib.Common;
 using thewhiskeystudy.lib.Objects;
 
 namespace thewhiskeystudy.Managers
 {
     public class DBManager : BaseManager
     {
-        public List<RawDatabaseItem> GetDatabase()
-        {
-            using (var sr = new StreamReader("Whiskey DB.csv")) { 
-                var csv = new CsvReader(sr);
-
-                var records = new List<RawDatabaseItem>();
-
-                while (csv.Read())
-                {
-                    try
-                    {
-                        var record = csv.GetRecord<RawDatabaseItem>();
-
-                        records.Add(record);
-                    }
-                    catch (Exception ex)
-                    {
-                        var error = ex;
-                    }
-                }
-
-                return records;
-            }
-        }
+        public List<RawDatabaseItem> GetDatabase() => 
+            !File.Exists(Constants.FILE_JSON_DBFILENAME) ? new List<RawDatabaseItem>() : JsonConvert.DeserializeObject<List<RawDatabaseItem>>(File.ReadAllText(Constants.FILE_JSON_DBFILENAME));        
 
         public IQueryable<RawDatabaseItem> GetSuggestions(bool wantsReadilyAvailable, bool likesCaramel, bool likesSpice, double? maxPrice, bool likesHighProof, bool likesSmooth, bool likesSweet)
         {

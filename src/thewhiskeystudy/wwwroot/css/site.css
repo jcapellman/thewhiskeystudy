@@ -14,16 +14,6 @@ h1, h3 {
     font-weight: bold;
 }
 
-a {
-    text-transform: uppercase;
-    color: #FFF;
-}
-
-a:focus, a:visited, a:hover {
-    color: #FFF;
-    text-decoration: none;
-}
-
 .navbar {
     background-color: black;
 }
@@ -59,60 +49,9 @@ footer {
     font-size: 10px;
 }
 
-.leaderboardCategoryContainer {
-    width: 100%;    
-}
-
-.leaderboardContainer {
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 5px;
-    width: 400px;
-    float: left;
-    margin-left: 10px;
-    height: 160px;
-    margin-top: 10px;
-}
-
-.leaderboardContainer a {
-    font-size: 16px;
-}
-
-.leaderboardContainer span {
-    padding-left: 10px;
-    padding-top: 5px;
-    color: white;
-}
-
-.leaderboardContainer .Ranking {
-    font-size: 30px;
-    color: Gold;
-}
-
-.leaderboardContainer img {
-    padding-left: 10px;
-    float: left;
-    width: 100px;
-}
-
-.leaderboardContainer .additionalInformation {
-    float: left;
-    width: 100px;
-}
-
-.labelHeader {
-    font-weight: bolder;
-    text-transform: uppercase;
-    font-size: 12px;
-    color: Black !important;
-}
-
-.labelValue {
-    color: White;
-}
-
 /* Suggestion Form */
 .SuggestionFormContainer {
-    width: 350px;
+    max-width: 350px;
     margin: 0 auto;
 }
 

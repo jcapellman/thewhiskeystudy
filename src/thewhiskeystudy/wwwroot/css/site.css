@@ -55,7 +55,8 @@ a:focus, a:visited, a:hover {
 
 footer {
     text-align:center;
-    font-weight: bold;
+    font-weight: normal;
+    font-size: 10px;
 }
 
 .leaderboardCategoryContainer {

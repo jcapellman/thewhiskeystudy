@@ -2,29 +2,41 @@
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 
 using ExcelDataReader;
 
 using Newtonsoft.Json;
 
+using thewhiskeystudy.lib.Common;
 using thewhiskeystudy.lib.Objects;
 
 namespace thewhiskeystudy.utils.jsonbuilder
 {
     public class FileParser
     {
-        public void ParseFile(string fileName, string outputFileName)
+        public void ParseFile(string fileName)
         {
             var data = GetDataFromExcel(fileName);
 
-            WriteToJson(data, outputFileName);
+            UploadJson(data);
         }
 
-        private void WriteToJson(List<RawDatabaseItem> data, string outputFileName)
+        private string readToken() => File.ReadAllText(Constants.FILE_TOKEN_FILENAME);
+
+        private async void UploadJson(List<RawDatabaseItem> data)
         {
             var jsonString = JsonConvert.SerializeObject(data);
 
-            File.WriteAllText(outputFileName, jsonString);
+            using (var httpClient = new HttpClient())
+            {
+                var httpContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+                httpClient.DefaultRequestHeaders.Add(Constants.HTTP_HEADER_TOKEN, readToken());
+
+                await httpClient.PutAsync(Constants.URL_RESTSERVICE, httpContent);
+            }            
         }
 
         private List<RawDatabaseItem> GetDataFromExcel(string fileName)

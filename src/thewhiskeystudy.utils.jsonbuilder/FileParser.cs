@@ -35,7 +35,22 @@ namespace thewhiskeystudy.utils.jsonbuilder
                 {                 
                     var rows = reader.AsDataSet().Tables[0].Rows.Cast<DataRow>().Skip(1);
 
-                    return rows.Select(row => new RawDatabaseItem(row)).ToList();
+                    var data = new List<RawDatabaseItem>();
+
+                    foreach (var row in rows)
+                    {
+                        var databaseItem = new RawDatabaseItem(row);
+
+                        // TODO: Once all legacy reviews have been performed removed
+                        if (databaseItem.Rating == -1.0)
+                        {
+                            continue;
+                        }
+
+                        data.Add(databaseItem);
+                    }
+
+                    return data;
                 }
             }
         }

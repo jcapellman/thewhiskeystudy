@@ -21,7 +21,7 @@
             foreach (var item in Model)
             {
             <div class="SuggestionListingContainer">
-                <h3>(@item.Rating / 10) - @item.Name</h3>
+                <h3>@item.Name</h3>
 
                 <div class="row">
                     <div class="col-md-4">
@@ -47,6 +47,11 @@
                     <div class="col-md-4">
                         <span class="label">worth it</span><br/>
                         <span class="labelValue">@(item.WorthIt ? "Yes" : "No")</span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <span class="label">rating</span><br/>
+                        <span class="labelValue">@item.Rating / 10</span>
                     </div>
                 </div>
                 

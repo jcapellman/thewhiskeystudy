@@ -27,7 +27,8 @@ namespace thewhiskeystudy.Controllers
                 Aged = a.Aged,
                 ABV = a.ABV,
                 WorthIt = a.WorthIt,
-                Rating = a.Rating
+                Rating = a.Rating,
+                ActualPrice = a.ActualPrice
             });
 
             if (model.MostImportantAspect == MostImportantSuggestionChoices.NO_OPINION)

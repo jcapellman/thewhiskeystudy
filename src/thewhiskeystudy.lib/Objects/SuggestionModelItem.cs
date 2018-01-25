@@ -21,5 +21,7 @@
         public bool WorthIt { get; set; }
 
         public string AdditionalNotes { get; set; }
+
+        public double? ActualPrice { get; set; }
     }
 }

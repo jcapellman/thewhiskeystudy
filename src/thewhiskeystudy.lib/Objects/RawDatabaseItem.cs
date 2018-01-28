@@ -66,6 +66,9 @@ namespace thewhiskeystudy.lib.Objects
         [DataMember]
         public double? ActualPrice { get; set; }
 
+        [DataMember]
+        public double? MaxWorthItPrice { get; set; }
+
         public RawDatabaseItem() { }
 
         private const string TRUESTR = "TRUE";
@@ -94,6 +97,7 @@ namespace thewhiskeystudy.lib.Objects
             Value = dataRow[17] == DBNull.Value ? 0 : Convert.ToInt32(dataRow[17]);
             AdditionalNotes = dataRow[18].ToString();
             ActualPrice = dataRow[19] == DBNull.Value ? null : (double?)Convert.ToDouble(dataRow[19]);
+            MaxWorthItPrice = dataRow[20] == DBNull.Value ? null : (double?)Convert.ToDouble(dataRow[20]);
         }
     }
 }

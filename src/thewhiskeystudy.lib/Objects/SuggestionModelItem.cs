@@ -23,5 +23,7 @@
         public string AdditionalNotes { get; set; }
 
         public double? ActualPrice { get; set; }
+
+        public double? MaxWorthItPrice { get; set; }
     }
 }

@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+
+using Microsoft.Extensions.Caching.Memory;
 
 using Newtonsoft.Json;
 
@@ -12,9 +15,25 @@ namespace thewhiskeystudy.Managers
 {
     public class DBManager : BaseManager
     {
-        public List<RawDatabaseItem> GetDatabase() => 
-            !File.Exists(Constants.FILE_JSON_DBFILENAME) ? new List<RawDatabaseItem>() : JsonConvert.DeserializeObject<List<RawDatabaseItem>>(File.ReadAllText(Constants.FILE_JSON_DBFILENAME));        
+        public DBManager(IMemoryCache cache) : base(cache) { }
 
+        public List<RawDatabaseItem> GetDatabase() {
+            if (!cache.TryGetValue(Constants.CACHEKEY_DB, out List<RawDatabaseItem> cacheEntry))
+            {
+                if (!File.Exists(Constants.FILE_JSON_DBFILENAME)) {
+                    return new List<RawDatabaseItem>();
+                }
+
+                cacheEntry = JsonConvert.DeserializeObject<List<RawDatabaseItem>>(File.ReadAllText(Constants.FILE_JSON_DBFILENAME));
+
+                var cacheEntryOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.MaxValue);
+
+                cache.Set(Constants.CACHEKEY_DB, cacheEntry, cacheEntryOptions);
+            }
+
+            return new List<RawDatabaseItem>();
+        }
+          
         public IQueryable<RawDatabaseItem> GetSuggestions(SuggestionFormChoices wantsReadilyAvailable, SuggestionFormChoices likesCaramel, SuggestionFormChoices likesSpice, double? maxPrice, SuggestionFormChoices likesHighProof, SuggestionFormChoices likesSmooth, SuggestionFormChoices likesSweet)
         {
             var query = GetDatabase().AsQueryable();

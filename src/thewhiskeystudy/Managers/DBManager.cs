@@ -18,20 +18,18 @@ namespace thewhiskeystudy.Managers
         public DBManager(IMemoryCache cache) : base(cache) { }
 
         public List<RawDatabaseItem> GetDatabase() {
-            if (!cache.TryGetValue(Constants.CACHEKEY_DB, out List<RawDatabaseItem> cacheEntry))
+            var cachedItem = GetCachedItem<List<RawDatabaseItem>>(Constants.CACHEKEY_DB);
+
+            if (cachedItem == default(List<RawDatabaseItem>) && File.Exists(Constants.FILE_JSON_DBFILENAME))
             {
-                if (!File.Exists(Constants.FILE_JSON_DBFILENAME)) {
-                    return new List<RawDatabaseItem>();
-                }
+                var result = JsonConvert.DeserializeObject<List<RawDatabaseItem>>(File.ReadAllText(Constants.FILE_JSON_DBFILENAME));
 
-                cacheEntry = JsonConvert.DeserializeObject<List<RawDatabaseItem>>(File.ReadAllText(Constants.FILE_JSON_DBFILENAME));
+                AddCachedItem<List<RawDatabaseItem>>(Constants.CACHEKEY_DB, result);
 
-                var cacheEntryOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.MaxValue);
-
-                cache.Set(Constants.CACHEKEY_DB, cacheEntry, cacheEntryOptions);
+                return result;
             }
 
-            return new List<RawDatabaseItem>();
+            return cachedItem;
         }
           
         public IQueryable<RawDatabaseItem> GetSuggestions(SuggestionFormChoices wantsReadilyAvailable, SuggestionFormChoices likesCaramel, SuggestionFormChoices likesSpice, double? maxPrice, SuggestionFormChoices likesHighProof, SuggestionFormChoices likesSmooth, SuggestionFormChoices likesSweet)

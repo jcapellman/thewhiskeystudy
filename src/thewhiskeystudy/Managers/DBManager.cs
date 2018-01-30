@@ -18,13 +18,14 @@ namespace thewhiskeystudy.Managers
         public DBManager(IMemoryCache cache) : base(cache) { }
 
         public List<RawDatabaseItem> GetDatabase() {
-            var cachedItem = GetCachedItem<List<RawDatabaseItem>>(Constants.CACHEKEY_DB);
+            var cachedItem = GetCachedItem<List<RawDatabaseItem>>(CacheKeys.FULL_RAW_DB);
 
+            // Database exists and cache hasn't been initialized
             if (cachedItem == default(List<RawDatabaseItem>) && File.Exists(Constants.FILE_JSON_DBFILENAME))
             {
                 var result = JsonConvert.DeserializeObject<List<RawDatabaseItem>>(File.ReadAllText(Constants.FILE_JSON_DBFILENAME));
 
-                AddCachedItem<List<RawDatabaseItem>>(Constants.CACHEKEY_DB, result);
+                AddCachedItem(CacheKeys.FULL_RAW_DB, result);
 
                 return result;
             }

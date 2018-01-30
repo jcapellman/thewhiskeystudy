@@ -17,6 +17,7 @@ namespace thewhiskeystudy
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
             services.AddMvc();
         }
         

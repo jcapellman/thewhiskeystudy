@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 using thewhiskeystudy.lib.Enums;
 using thewhiskeystudy.lib.Objects;
@@ -11,9 +12,16 @@ namespace thewhiskeystudy.Controllers
 {
     public class SuggestionController : Controller
     {
+        private IMemoryCache cache;
+
+        public SuggestionController(IMemoryCache memoryCache)
+        {
+            cache = memoryCache;
+        }
+
         public ActionResult Index(SuggestionFormModel model)
         {
-            var results = new DBManager().GetSuggestions(model.WantsReadilyAvailable, model.LikesCaramel, model.LikesRye,
+            var results = new DBManager(cache).GetSuggestions(model.WantsReadilyAvailable, model.LikesCaramel, model.LikesRye,
                 model.MaxPrice, model.LikesHighProof, model.LikesSmooth, model.LikesSweet);
 
             var finalResults = results.Select(a => new SuggestionModelItem

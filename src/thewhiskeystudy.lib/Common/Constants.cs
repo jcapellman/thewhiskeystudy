@@ -10,7 +10,5 @@
         public const string URL_RESTSERVICE = "http://thewhiskeystudy.com/api/";
 
         public const string HTTP_HEADER_TOKEN = "Token";
-
-        public const string CACHEKEY_DB = "DB";
     }
 }

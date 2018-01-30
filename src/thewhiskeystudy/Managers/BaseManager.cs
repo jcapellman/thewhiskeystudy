@@ -1,5 +1,8 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using System;
+﻿using System;
+
+using Microsoft.Extensions.Caching.Memory;
+
+using thewhiskeystudy.lib.Enums;
 
 namespace thewhiskeystudy.Managers
 {
@@ -12,7 +15,7 @@ namespace thewhiskeystudy.Managers
             this.cache = cache;
         }
 
-        protected T GetCachedItem<T>(string key)
+        protected T GetCachedItem<T>(CacheKeys key)
         {
             if (!cache.TryGetValue(key, out T cacheEntry))
             {
@@ -22,7 +25,7 @@ namespace thewhiskeystudy.Managers
             return cache.Get<T>(key);
         }
 
-        protected void AddCachedItem<T>(string key, T obj)
+        protected void AddCachedItem<T>(CacheKeys key, T obj)
         {
             var cacheEntryOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.MaxValue);
 

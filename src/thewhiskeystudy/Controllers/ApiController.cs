@@ -1,19 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
-using thewhiskeystudy.lib.Common;
+using thewhiskeystudy.Managers;
 using thewhiskeystudy.Middleware;
 
 namespace thewhiskeystudy.Controllers
 {
     public class ApiController : Controller
     {
+        private IMemoryCache cache;
+
+        public ApiController(IMemoryCache cache)
+        {
+            this.cache = cache;
+        }
+
         [TokenFilter]
         [HttpPut]
-        public bool PUT(string jsonDb)
-        {
-            System.IO.File.WriteAllText(Constants.FILE_JSON_DBFILENAME, jsonDb);
-
-            return true;
-        }
+        public bool PUT(string jsonDb) => new DBManager(cache).UpdateDatabase(jsonDb);
     }
 }

@@ -73,7 +73,7 @@ namespace thewhiskeystudy.lib.Objects
 
         private const string TRUESTR = "TRUE";
 
-        private bool getDataRowBool(object objValue) => objValue.ToString().ToUpper() == TRUESTR;
+        private bool GetDataRowBool(object objValue) => objValue.ToString().ToUpper() == TRUESTR;
     
         public RawDatabaseItem(DataRow dataRow)
         {
@@ -82,18 +82,18 @@ namespace thewhiskeystudy.lib.Objects
             Aged = dataRow[2].ToString();
             Rating = dataRow[3] == DBNull.Value ? 0 : Convert.ToDouble(dataRow[3]);
             ABV = dataRow[4] == DBNull.Value ? 0 : Convert.ToDouble(dataRow[4]);
-            EasyToFind = getDataRowBool(dataRow[5]);
+            EasyToFind = GetDataRowBool(dataRow[5]);
             EaseToFind = dataRow[6] == DBNull.Value ? 0 : Convert.ToDouble(dataRow[6]);
-            HasSpiceTaste = getDataRowBool(dataRow[7]);
-            HasSmoothTaste = getDataRowBool(dataRow[8]);
-            HasSweetTaste = getDataRowBool(dataRow[9]);
-            HasCaramelTaste = getDataRowBool(dataRow[10]);
+            HasSpiceTaste = GetDataRowBool(dataRow[7]);
+            HasSmoothTaste = GetDataRowBool(dataRow[8]);
+            HasSweetTaste = GetDataRowBool(dataRow[9]);
+            HasCaramelTaste = GetDataRowBool(dataRow[10]);
             TastingNotes = dataRow[11].ToString();
-            HasCaramelNose = getDataRowBool(dataRow[12]);
+            HasCaramelNose = GetDataRowBool(dataRow[12]);
             Nose = dataRow[13].ToString();
             Distillery = dataRow[14].ToString();
             Price = dataRow[15] == DBNull.Value ? 0 : Convert.ToInt32(dataRow[15]);
-            WorthIt = getDataRowBool(dataRow[16]);
+            WorthIt = GetDataRowBool(dataRow[16]);
             Value = dataRow[17] == DBNull.Value ? 0 : Convert.ToInt32(dataRow[17]);
             AdditionalNotes = dataRow[18].ToString();
             ActualPrice = dataRow[19] == DBNull.Value ? null : (double?)Convert.ToDouble(dataRow[19]);

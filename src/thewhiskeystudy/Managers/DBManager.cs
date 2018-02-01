@@ -17,22 +17,22 @@ namespace thewhiskeystudy.Managers
     {
         public DBManager(IMemoryCache cache) : base(cache) { }
 
-        public bool UpdateDatabase(string rawJson)
+        public (bool success, Exception exception) UpdateDatabase(string rawJson)
         {
             List<RawDatabaseItem> deserializedObject = null;
 
             try
             {
                 deserializedObject = JsonConvert.DeserializeObject<List<RawDatabaseItem>>(rawJson);
-            } catch (Exception)
+            } catch (Exception ex)
             {
-                return false; // TODO: Handle errors
+                return (false, ex); // TODO: Handle errors
             }
 
             AddCachedItem(CacheKeys.FULL_RAW_DB, deserializedObject);
             File.WriteAllText(Constants.FILE_JSON_DBFILENAME, rawJson);
 
-            return true;
+            return (true, null);
         }
 
         public List<RawDatabaseItem> GetDatabase() {

@@ -7,6 +7,8 @@
 
         public const string FILE_TOKEN_FILENAME = "token.key";
 
+        public const string FILE_NLOG_CONFIG_FILENAME = "nlog.config";
+
         public const string URL_RESTSERVICE = "http://thewhiskeystudy.com/api/";
 
         public const string HTTP_HEADER_TOKEN = "Token";

@@ -9,7 +9,7 @@ namespace thewhiskeystudy
     {
         public static void Main(string[] args)
         {
-            var logger = LogBuilder.ConfigureNLog("NLog.config").GetCurrentClassLogger();
+            var logger = NLogBuilder.ConfigureNLog(lib.Common.Constants.FILE_NLOG_CONFIG_FILENAME).GetCurrentClassLogger();
 
             BuildWebHost(args).Run();
         }

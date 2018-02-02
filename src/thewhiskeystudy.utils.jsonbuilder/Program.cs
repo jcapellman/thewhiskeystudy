@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-using thewhiskeystudy.lib.Common;
+using CommandLine;
 
 namespace thewhiskeystudy.utils.jsonbuilder
 {
@@ -10,14 +10,11 @@ namespace thewhiskeystudy.utils.jsonbuilder
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-            var inputFileName = Constants.FILE_XLSX_DBFILENAME;
-            
-            if (args.Length == 1)
-            {
-                inputFileName = args[0];
-            }            
+            var commandLineArguments = new CommandLineArguments();
 
-            new FileParser().ParseFile(inputFileName);
+            Parser.Default.ParseArguments(args, commandLineArguments);
+            
+            new FileParser().ParseFile(commandLineArguments.InputFile, commandLineArguments.OutputToJSONFile);
         }
     }
 }

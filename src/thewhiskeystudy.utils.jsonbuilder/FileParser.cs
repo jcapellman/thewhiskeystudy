@@ -16,11 +16,25 @@ namespace thewhiskeystudy.utils.jsonbuilder
 {
     public class FileParser
     {
-        public void ParseFile(string fileName)
+        public void ParseFile(string fileName, bool outputToJsonFile = false)
         {
             var data = GetDataFromExcel(fileName);
 
-            UploadJson(data);
+            if (outputToJsonFile)
+            {
+                WriteJSON(data);
+            }
+            else
+            {
+                UploadJson(data);
+            }
+        }
+
+        private void WriteJSON(List<RawDatabaseItem> data)
+        {
+            var jsonString = JsonConvert.SerializeObject(data);
+
+            File.WriteAllText(Constants.FILE_JSON_DBFILENAME, jsonString);
         }
 
         private string readToken() => File.ReadAllText(Constants.FILE_TOKEN_FILENAME);

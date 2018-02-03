@@ -1,0 +1,95 @@
+﻿@model ReportModel
+
+@{
+    ViewData["Title"] = Model.PageTitle;
+}
+
+<div class="row" style="margin-top: 20px;">
+    <img src="~/images/headerlogo.png" class="img-responsive center-block" alt="The Whiskey Study"  />
+    
+    <div class="body-text" style="margin-top: 10px;">
+        <h3 class="text-center">@Model.ReportName</h3>
+
+        @foreach (var item in Model.Suggestions)
+        {
+        <div class="SuggestionListingContainer">
+            <h3>@item.Name</h3>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="label">price</span><br />
+                    <span class="labelValue">$@item.Price</span>
+                </div>
+
+                    
+                @if (item.ActualPrice.HasValue)
+                {
+                    <div class="col-md-4">
+                        <span class="label">actual price</span><br />
+                        <span class="labelValue">@item.ActualPrice.Value</span>
+                    </div>
+                }
+
+                @if (item.MaxWorthItPrice.HasValue)
+                {
+                        <div class="col-md-4">
+                        <span class="label">max worth it price</span><br />
+                        <span class="labelValue">@item.MaxWorthItPrice.Value</span>
+                    </div>
+                }
+
+                <div class="col-md-4">
+                    <span class="label">abv</span><br />
+                    <span class="labelValue">@item.ABV%</span>
+                </div>
+
+                <div class="col-md-4">
+                    <span class="label">aged (yrs)</span><br />
+                    <span class="labelValue">@item.Aged</span>
+                </div>
+
+                <div class="col-md-4">
+                    <span class="label">easy to find</span><br />
+                    <span class="labelValue">@(item.EasyToFind ? "Yes" : "No")</span>
+                </div>
+
+                <div class="col-md-4">
+                    <span class="label">worth it</span><br />
+                    <span class="labelValue">@(item.WorthIt ? "Yes" : "No")</span>
+                </div>
+
+                <div class="col-md-4">
+                    <span class="label">rating</span><br />
+                    <span class="labelValue">@item.Rating / 10</span>
+                </div>
+            </div>
+                
+            @if (!string.IsNullOrEmpty(item.TastingNotes))
+            {
+                <div class="NoteContainer">
+                    <span class="label">tasting notes</span><br/>
+                    <span class="labelValue">@item.TastingNotes</span>
+                </div>
+            }
+                
+            @if (!string.IsNullOrEmpty(item.Nose))
+            {
+                <div class="NoteContainer">
+                    <span class="label">nose notes</span><br/>
+                    <span class="labelValue">@item.Nose</span>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(item.AdditionalNotes))
+            {
+                <div class="NoteContainer">
+                    <span class="label">additional notes</span><br />
+                    <span class="labelValue">@item.AdditionalNotes</span>
+                </div>
+            }
+        </div>  
+                
+        <hr/>
+        }
+    }
+</div>

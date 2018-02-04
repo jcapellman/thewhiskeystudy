@@ -12,5 +12,9 @@
         public const string URL_RESTSERVICE = "http://thewhiskeystudy.com/api/";
 
         public const string HTTP_HEADER_TOKEN = "Token";
+
+        public const string REPORT_NAME_TOP_BARGAINS = "Top Bargains";
+
+        public const string REPORT_NAME_TOP_RATED = "Top Rated";
     }
 }

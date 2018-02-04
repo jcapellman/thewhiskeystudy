@@ -5,6 +5,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
 using thewhiskeystudy.lib.Objects;
+
 using thewhiskeystudy.Managers;
 using thewhiskeystudy.Models;
 
@@ -31,8 +32,8 @@ namespace thewhiskeystudy.Controllers
 
             var model = new ReportModel
             {
-                ReportName = "Top Rated",
-                PageTitle = "Top Rated",
+                ReportName = lib.Common.Constants.REPORT_NAME_TOP_RATED,
+                PageTitle = lib.Common.Constants.REPORT_NAME_TOP_RATED,
 
                 Suggestions = results.Where(a => a.Rating > 8).Select(a => new SuggestionModelItem
                 {
@@ -63,8 +64,8 @@ namespace thewhiskeystudy.Controllers
 
             var model = new ReportModel
             {
-                ReportName = "Top Bargains",
-                PageTitle = "Top Bargains",
+                ReportName = lib.Common.Constants.REPORT_NAME_TOP_BARGAINS,
+                PageTitle = lib.Common.Constants.REPORT_NAME_TOP_BARGAINS,
 
                 Suggestions = results.Where(a => a.Rating > 5).Select(a => new SuggestionModelItem
                 {

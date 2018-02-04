@@ -2,20 +2,16 @@
 using System.Diagnostics;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
 using thewhiskeystudy.Models;
 
 namespace thewhiskeystudy.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController<HomeController>
     {
-        private readonly ILogger<HomeController> logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            this.logger = logger;
-        }
+        public HomeController(IMemoryCache cache, ILogger<HomeController> logger) : base(cache, logger) { }
 
         [ResponseCache(Duration = Int32.MaxValue)]
         public IActionResult Index() => View();

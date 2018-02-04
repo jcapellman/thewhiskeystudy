@@ -11,31 +11,28 @@ using thewhiskeystudy.Models;
 
 namespace thewhiskeystudy.Controllers
 {
-    public class ReportsController : Controller
+    public class ReportsController : BaseController<ReportsController>
     {
-        private IMemoryCache cache;
-
-        private readonly ILogger<ReportsController> logger;
-
-        public ReportsController(ILogger<ReportsController> logger, IMemoryCache cache)
-        {
-            this.logger = logger;
-            this.cache = cache;
-        }
-
+        public ReportsController(ILogger<ReportsController> logger, IMemoryCache cache) : base(cache, logger) { }
+        
         public IActionResult TopRated()
         {
-            var results = new DBManager(cache).GetSuggestions(lib.Enums.SuggestionFormChoices.NO_OPINION, lib.Enums.SuggestionFormChoices.NO_OPINION,
+            var (result, exception) = new DBManager(cache).GetSuggestions(lib.Enums.SuggestionFormChoices.NO_OPINION, lib.Enums.SuggestionFormChoices.NO_OPINION,
                 lib.Enums.SuggestionFormChoices.NO_OPINION, null,
                 lib.Enums.SuggestionFormChoices.NO_OPINION, lib.Enums.SuggestionFormChoices.NO_OPINION,
                 lib.Enums.SuggestionFormChoices.NO_OPINION);
+
+            if (exception != null)
+            {
+                return RedirectToError(exception);
+            }
 
             var model = new ReportModel
             {
                 ReportName = lib.Common.Constants.REPORT_NAME_TOP_RATED,
                 PageTitle = lib.Common.Constants.REPORT_NAME_TOP_RATED,
 
-                Suggestions = results.Where(a => a.Rating > 8).Select(a => new SuggestionModelItem
+                Suggestions = result.Where(a => a.Rating > 8).Select(a => new SuggestionModelItem
                 {
                     Name = a.Name,
                     EasyToFind = a.EasyToFind,
@@ -57,17 +54,22 @@ namespace thewhiskeystudy.Controllers
 
         public IActionResult TopBargains()
         {
-            var results = new DBManager(cache).GetSuggestions(lib.Enums.SuggestionFormChoices.YES, lib.Enums.SuggestionFormChoices.NO_OPINION, 
+            var (result, exception) = new DBManager(cache).GetSuggestions(lib.Enums.SuggestionFormChoices.YES, lib.Enums.SuggestionFormChoices.NO_OPINION, 
                 lib.Enums.SuggestionFormChoices.NO_OPINION, 60, 
                 lib.Enums.SuggestionFormChoices.NO_OPINION, lib.Enums.SuggestionFormChoices.NO_OPINION, 
                 lib.Enums.SuggestionFormChoices.NO_OPINION);
+
+            if (exception != null)
+            {
+                return RedirectToError(exception);
+            }
 
             var model = new ReportModel
             {
                 ReportName = lib.Common.Constants.REPORT_NAME_TOP_BARGAINS,
                 PageTitle = lib.Common.Constants.REPORT_NAME_TOP_BARGAINS,
 
-                Suggestions = results.Where(a => a.Rating > 5).Select(a => new SuggestionModelItem
+                Suggestions = result.Where(a => a.Rating > 5).Select(a => new SuggestionModelItem
                 {
                     Name = a.Name,
                     EasyToFind = a.EasyToFind,

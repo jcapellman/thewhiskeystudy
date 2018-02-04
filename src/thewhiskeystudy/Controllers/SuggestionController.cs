@@ -2,29 +2,31 @@
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 
 using thewhiskeystudy.lib.Enums;
 using thewhiskeystudy.lib.Objects;
+
 using thewhiskeystudy.Managers;
 using thewhiskeystudy.Models;
 
 namespace thewhiskeystudy.Controllers
 {
-    public class SuggestionController : Controller
+    public class SuggestionController : BaseController<SuggestionController>
     {
-        private IMemoryCache cache;
-
-        public SuggestionController(IMemoryCache memoryCache)
-        {
-            cache = memoryCache;
-        }
-
+        public SuggestionController(IMemoryCache cache, ILogger<SuggestionController> logger) : base(cache, logger) { }
+    
         public ActionResult Index(SuggestionFormModel model)
         {
-            var results = new DBManager(cache).GetSuggestions(model.WantsReadilyAvailable, model.LikesCaramel, model.LikesRye,
+            var (result, exception) = new DBManager(cache).GetSuggestions(model.WantsReadilyAvailable, model.LikesCaramel, model.LikesRye,
                 model.MaxPrice, model.LikesHighProof, model.LikesSmooth, model.LikesSweet);
 
-            var finalResults = results.Select(a => new SuggestionModelItem
+            if (exception != null)
+            {
+                return RedirectToError(exception);
+            }
+
+            var finalResults = result.Select(a => new SuggestionModelItem
             {
                 Name = a.Name,
                 EasyToFind = a.EasyToFind,

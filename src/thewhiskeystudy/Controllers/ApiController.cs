@@ -7,16 +7,9 @@ using thewhiskeystudy.Middleware;
 
 namespace thewhiskeystudy.Controllers
 {
-    public class ApiController : Controller
+    public class ApiController : BaseController<ApiController>
     {
-        private IMemoryCache cache;
-        private readonly ILogger<ApiController> logger;
-
-        public ApiController(IMemoryCache cache, ILogger<ApiController> logger)
-        {
-            this.cache = cache;
-            this.logger = logger;
-        }
+        public ApiController(IMemoryCache cache, ILogger<ApiController> logger) : base(cache, logger) { }
 
         [TokenFilter]
         [HttpPut]

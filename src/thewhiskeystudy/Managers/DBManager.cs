@@ -26,7 +26,7 @@ namespace thewhiskeystudy.Managers
                 deserializedObject = JsonConvert.DeserializeObject<List<RawDatabaseItem>>(rawJson);
             } catch (Exception ex)
             {
-                return (false, ex); // TODO: Handle errors
+                return (false, ex);
             }
 
             AddCachedItem(CacheKeys.FULL_RAW_DB, deserializedObject);
@@ -35,25 +35,38 @@ namespace thewhiskeystudy.Managers
             return (true, null);
         }
 
-        public List<RawDatabaseItem> GetDatabase() {
-            var cachedItem = GetCachedItem<List<RawDatabaseItem>>(CacheKeys.FULL_RAW_DB);
-
-            // Database exists and cache hasn't been initialized
-            if (cachedItem == default(List<RawDatabaseItem>) && File.Exists(Constants.FILE_JSON_DBFILENAME))
+        public (List<RawDatabaseItem> result, Exception exception) GetDatabase() {
+            try
             {
-                var result = JsonConvert.DeserializeObject<List<RawDatabaseItem>>(File.ReadAllText(Constants.FILE_JSON_DBFILENAME));
+                var cachedItem = GetCachedItem<List<RawDatabaseItem>>(CacheKeys.FULL_RAW_DB);
 
-                AddCachedItem(CacheKeys.FULL_RAW_DB, result);
+                // Database exists and cache hasn't been initialized
+                if (cachedItem == default(List<RawDatabaseItem>) && File.Exists(Constants.FILE_JSON_DBFILENAME))
+                {
+                    var result = JsonConvert.DeserializeObject<List<RawDatabaseItem>>(File.ReadAllText(Constants.FILE_JSON_DBFILENAME));
 
-                return result;
+                    AddCachedItem(CacheKeys.FULL_RAW_DB, result);
+
+                    return (result, null);
+                }
+
+                return (cachedItem, null);
+            } catch (Exception ex)
+            {
+                return (null, ex);
             }
-
-            return cachedItem;
         }
           
-        public IQueryable<RawDatabaseItem> GetSuggestions(SuggestionFormChoices wantsReadilyAvailable, SuggestionFormChoices likesCaramel, SuggestionFormChoices likesSpice, double? maxPrice, SuggestionFormChoices likesHighProof, SuggestionFormChoices likesSmooth, SuggestionFormChoices likesSweet)
+        public (IQueryable<RawDatabaseItem> result, Exception exception) GetSuggestions(SuggestionFormChoices wantsReadilyAvailable, SuggestionFormChoices likesCaramel, SuggestionFormChoices likesSpice, double? maxPrice, SuggestionFormChoices likesHighProof, SuggestionFormChoices likesSmooth, SuggestionFormChoices likesSweet)
         {
-            var query = GetDatabase().AsQueryable();
+            var result = GetDatabase();
+
+            if (result.exception != null)
+            {
+                return (null, result.exception);
+            }
+
+            var query = result.result.AsQueryable();
 
             if (maxPrice.HasValue)
             {
@@ -105,7 +118,7 @@ namespace thewhiskeystudy.Managers
                     : query.Where(a => !a.HasSweetTaste);
             }
 
-            return query;
+            return (query, null);
         }
     }
 }

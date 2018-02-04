@@ -1,7 +1,5 @@
 ﻿using System.Text;
 
-using CommandLine;
-
 namespace thewhiskeystudy.utils.jsonbuilder
 {
     internal static class Program
@@ -10,9 +8,7 @@ namespace thewhiskeystudy.utils.jsonbuilder
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-            var commandLineArguments = new CommandLineArguments();
-
-            Parser.Default.ParseArguments(args, commandLineArguments);
+            var commandLineArguments = CommandLineParser.ParserArgs<CommandLineArguments>(args);
             
             new FileParser().ParseFile(commandLineArguments.InputFile, commandLineArguments.OutputToJSONFile);
         }

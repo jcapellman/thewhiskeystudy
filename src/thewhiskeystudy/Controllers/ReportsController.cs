@@ -20,7 +20,8 @@ namespace thewhiskeystudy.Controllers
             var (result, exception) = new DBManager(cache).GetSuggestions(lib.Enums.SuggestionFormChoices.NO_OPINION, lib.Enums.SuggestionFormChoices.NO_OPINION,
                 lib.Enums.SuggestionFormChoices.NO_OPINION, null,
                 lib.Enums.SuggestionFormChoices.NO_OPINION, lib.Enums.SuggestionFormChoices.NO_OPINION,
-                lib.Enums.SuggestionFormChoices.NO_OPINION);
+                lib.Enums.SuggestionFormChoices.NO_OPINION,
+                lib.Enums.DrinkTypeChoices.NO_OPINION);
 
             if (exception != null)
             {
@@ -35,6 +36,7 @@ namespace thewhiskeystudy.Controllers
                 Suggestions = result.Where(a => a.Rating > 8).Select(a => new SuggestionModelItem
                 {
                     Name = a.Name,
+                    DrinkType = a.Type,
                     EasyToFind = a.EasyToFind,
                     TastingNotes = a.TastingNotes,
                     Nose = a.Nose,
@@ -57,7 +59,8 @@ namespace thewhiskeystudy.Controllers
             var (result, exception) = new DBManager(cache).GetSuggestions(lib.Enums.SuggestionFormChoices.YES, lib.Enums.SuggestionFormChoices.NO_OPINION, 
                 lib.Enums.SuggestionFormChoices.NO_OPINION, 60, 
                 lib.Enums.SuggestionFormChoices.NO_OPINION, lib.Enums.SuggestionFormChoices.NO_OPINION, 
-                lib.Enums.SuggestionFormChoices.NO_OPINION);
+                lib.Enums.SuggestionFormChoices.NO_OPINION,
+                lib.Enums.DrinkTypeChoices.NO_OPINION);
 
             if (exception != null)
             {
@@ -72,6 +75,7 @@ namespace thewhiskeystudy.Controllers
                 Suggestions = result.Where(a => a.Rating > 5).Select(a => new SuggestionModelItem
                 {
                     Name = a.Name,
+                    DrinkType = a.Type,
                     EasyToFind = a.EasyToFind,
                     TastingNotes = a.TastingNotes,
                     Nose = a.Nose,

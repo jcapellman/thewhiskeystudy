@@ -29,5 +29,8 @@ namespace thewhiskeystudy.Models
 
         [Display(Name = "Most Important to you?")]
         public MostImportantSuggestionChoices MostImportantAspect { get; set; }
+
+        [Display(Name = "Drink Type Preference?")]
+        public DrinkTypeChoices DrinkType { get; set; }
     }
 }

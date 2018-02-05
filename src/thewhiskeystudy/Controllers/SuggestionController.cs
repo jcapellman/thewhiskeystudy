@@ -19,7 +19,7 @@ namespace thewhiskeystudy.Controllers
         public ActionResult Index(SuggestionFormModel model)
         {
             var (result, exception) = new DBManager(cache).GetSuggestions(model.WantsReadilyAvailable, model.LikesCaramel, model.LikesRye,
-                model.MaxPrice, model.LikesHighProof, model.LikesSmooth, model.LikesSweet);
+                model.MaxPrice, model.LikesHighProof, model.LikesSmooth, model.LikesSweet, model.DrinkType);
 
             if (exception != null)
             {
@@ -29,6 +29,7 @@ namespace thewhiskeystudy.Controllers
             var finalResults = result.Select(a => new SuggestionModelItem
             {
                 Name = a.Name,
+                DrinkType = a.Type,
                 EasyToFind = a.EasyToFind,
                 TastingNotes = a.TastingNotes,
                 Nose = a.Nose,

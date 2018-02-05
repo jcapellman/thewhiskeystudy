@@ -4,6 +4,8 @@
     {
         public string Name { get; set; }
 
+        public string DrinkType { get; set; }
+
         public string Aged { get; set; }
 
         public double ABV { get; set; }

@@ -57,7 +57,10 @@ namespace thewhiskeystudy.Managers
             }
         }
           
-        public (IQueryable<RawDatabaseItem> result, Exception exception) GetSuggestions(SuggestionFormChoices wantsReadilyAvailable, SuggestionFormChoices likesCaramel, SuggestionFormChoices likesSpice, double? maxPrice, SuggestionFormChoices likesHighProof, SuggestionFormChoices likesSmooth, SuggestionFormChoices likesSweet)
+        public (IQueryable<RawDatabaseItem> result, Exception exception) GetSuggestions(SuggestionFormChoices wantsReadilyAvailable, 
+            SuggestionFormChoices likesCaramel, SuggestionFormChoices likesSpice, double? maxPrice, 
+            SuggestionFormChoices likesHighProof, SuggestionFormChoices likesSmooth, 
+            SuggestionFormChoices likesSweet, DrinkTypeChoices drinkType)
         {
             var result = GetDatabase();
 
@@ -116,6 +119,22 @@ namespace thewhiskeystudy.Managers
                 query = likesSweet == SuggestionFormChoices.YES
                     ? query.Where(a => a.HasSweetTaste)
                     : query.Where(a => !a.HasSweetTaste);
+            }
+
+            if (drinkType != DrinkTypeChoices.NO_OPINION)
+            {
+                switch (drinkType)
+                {
+                    case DrinkTypeChoices.BOURBON:
+                        query = query.Where(a => a.Type == "Bourbon");
+                        break;
+                    case DrinkTypeChoices.SCOTCH:
+                        query = query.Where(a => a.Type == "Scotch");
+                        break;
+                    case DrinkTypeChoices.WHISKEY:
+                        query = query.Where(a => a.Type == "Whiskey");
+                        break;
+                }
             }
 
             return (query, null);

@@ -69,13 +69,22 @@
                             <select asp-for="@Model.WantsReadilyAvailable" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>
                         </div>
                     </div>
-                    
+
                     <div class="SuggestionFormContainer">
                         <div class="entryLabel">
                             @Html.LabelFor(a => a.MostImportantAspect)
                         </div>
                         <div class="entry">
                             <select asp-for="@Model.MostImportantAspect" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.MostImportantSuggestionChoices>()" class="form-control"></select>
+                        </div>
+                    </div>
+
+                    <div class="SuggestionFormContainer">
+                        <div class="entryLabel">
+                            @Html.LabelFor(a => a.DrinkType)
+                        </div>
+                        <div class="entry">
+                            <select asp-for="@Model.DrinkType" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.DrinkTypeChoices>()" class="form-control"></select>
                         </div>
                     </div>
 

@@ -37,7 +37,7 @@ namespace thewhiskeystudy.utils.jsonbuilder
             File.WriteAllText(Constants.FILE_JSON_DBFILENAME, jsonString);
         }
 
-        private string readToken() => File.ReadAllText(Constants.FILE_TOKEN_FILENAME);
+        private string ReadToken() => File.ReadAllText(Constants.FILE_TOKEN_FILENAME);
 
         private async void UploadJson(List<RawDatabaseItem> data)
         {
@@ -47,7 +47,7 @@ namespace thewhiskeystudy.utils.jsonbuilder
             {
                 var httpContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
-                httpClient.DefaultRequestHeaders.Add(Constants.HTTP_HEADER_TOKEN, readToken());
+                httpClient.DefaultRequestHeaders.Add(Constants.HTTP_HEADER_TOKEN, ReadToken());
 
                 await httpClient.PutAsync(Constants.URL_RESTSERVICE, httpContent);
             }            

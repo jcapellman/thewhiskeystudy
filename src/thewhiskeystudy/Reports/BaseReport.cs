@@ -14,15 +14,15 @@ namespace thewhiskeystudy.Reports
         protected abstract string ReportTitle { get; }
         protected abstract string ReportDescription { get; }
 
-        protected abstract (IQueryable<RawDatabaseItem> data, Exception exception) populateModel(IMemoryCache cache);
+        protected abstract (IQueryable<RawDatabaseItem> data, Exception exception) PopulateModel(IMemoryCache cache);
 
         public (ReportModel model, Exception exception) GenerateModel(IMemoryCache cache)
         {
-            var results = populateModel(cache);
+            var (data, exception) = PopulateModel(cache);
 
-            if (results.exception != null)
+            if (exception != null)
             {
-                return (null, results.exception);
+                return (null, exception);
             }
 
             var model = new ReportModel
@@ -30,7 +30,7 @@ namespace thewhiskeystudy.Reports
                 ReportName = ReportName,
                 PageTitle = ReportTitle,
                 ReportDescription = ReportDescription,
-                Suggestions = results.data.Select(a => new SuggestionModelItem
+                Suggestions = data.Select(a => new SuggestionModelItem
                 {
                     Name = a.Name,
                     DrinkType = a.Type,

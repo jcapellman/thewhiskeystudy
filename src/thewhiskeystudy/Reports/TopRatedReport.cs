@@ -14,7 +14,7 @@ namespace thewhiskeystudy.Reports
         protected override string ReportTitle => lib.Common.Constants.REPORT_NAME_TOP_RATED;
         protected override string ReportDescription => lib.Common.Constants.REPORT_DESCRIPTION_TOP_RATED;
 
-        protected override (IQueryable<RawDatabaseItem> data, Exception exception) populateModel(IMemoryCache cache)
+        protected override (IQueryable<RawDatabaseItem> data, Exception exception) PopulateModel(IMemoryCache cache)
         {
             var (result, exception) = new DBManager(cache).GetSuggestions(lib.Enums.SuggestionFormChoices.NO_OPINION, lib.Enums.SuggestionFormChoices.NO_OPINION,
                 lib.Enums.SuggestionFormChoices.NO_OPINION, null,

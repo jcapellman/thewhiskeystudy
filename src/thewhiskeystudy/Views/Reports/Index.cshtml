@@ -4,12 +4,11 @@
     ViewData["Title"] = Model.PageTitle;
 }
 
-<div class="row" style="margin-top: 20px;">
-    <img src="~/images/headerlogo.png" class="img-responsive center-block" alt="The Whiskey Study"  />
-    
+<div class="row" style="margin-top: 20px;">    
     <div class="body-text" style="margin-top: 10px;">
         <h3 class="text-center">@Model.ReportName</h3>
-
+        <p class="text-center">@Model.ReportDescription</p>
+        
         @foreach (var item in Model.Suggestions)
         {
             @Html.Partial("_SuggestionBox", item)

@@ -1,96 +1,24 @@
-﻿using System.Linq;
-
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
-using thewhiskeystudy.lib.Objects;
-
-using thewhiskeystudy.Managers;
-using thewhiskeystudy.Models;
+using thewhiskeystudy.Reports;
 
 namespace thewhiskeystudy.Controllers
 {
     public class ReportsController : BaseController<ReportsController>
     {
         public ReportsController(ILogger<ReportsController> logger, IMemoryCache cache) : base(cache, logger) { }
-        
-        public IActionResult TopRated()
+
+        private IActionResult RenderReport(BaseReport report)
         {
-            var (result, exception) = new DBManager(cache).GetSuggestions(lib.Enums.SuggestionFormChoices.NO_OPINION, lib.Enums.SuggestionFormChoices.NO_OPINION,
-                lib.Enums.SuggestionFormChoices.NO_OPINION, null,
-                lib.Enums.SuggestionFormChoices.NO_OPINION, lib.Enums.SuggestionFormChoices.NO_OPINION,
-                lib.Enums.SuggestionFormChoices.NO_OPINION,
-                lib.Enums.DrinkTypeChoices.NO_OPINION);
+            var (result, exception) = report.GenerateModel(cache);
 
-            if (exception != null)
-            {
-                return RedirectToError(exception);
-            }
-
-            var model = new ReportModel
-            {
-                ReportName = lib.Common.Constants.REPORT_NAME_TOP_RATED,
-                PageTitle = lib.Common.Constants.REPORT_NAME_TOP_RATED,
-
-                Suggestions = result.Where(a => a.Rating > 8).Select(a => new SuggestionModelItem
-                {
-                    Name = a.Name,
-                    DrinkType = a.Type,
-                    EasyToFind = a.EasyToFind,
-                    TastingNotes = a.TastingNotes,
-                    Nose = a.Nose,
-                    Price = a.Price,
-                    AdditionalNotes = a.AdditionalNotes,
-                    Aged = a.Aged,
-                    ABV = a.ABV,
-                    WorthIt = a.WorthIt,
-                    Rating = a.Rating,
-                    ActualPrice = a.ActualPrice,
-                    MaxWorthItPrice = a.MaxWorthItPrice
-                }).OrderByDescending(a => a.Rating).ToList()
-            };
-
-            return View("Index", model);
+            return exception != null ? RedirectToError(exception) : View("Index", result);
         }
 
-        public IActionResult TopBargains()
-        {
-            var (result, exception) = new DBManager(cache).GetSuggestions(lib.Enums.SuggestionFormChoices.YES, lib.Enums.SuggestionFormChoices.NO_OPINION, 
-                lib.Enums.SuggestionFormChoices.NO_OPINION, 60, 
-                lib.Enums.SuggestionFormChoices.NO_OPINION, lib.Enums.SuggestionFormChoices.NO_OPINION, 
-                lib.Enums.SuggestionFormChoices.NO_OPINION,
-                lib.Enums.DrinkTypeChoices.NO_OPINION);
+        public IActionResult TopRated() => RenderReport(new TopRatedReport());
 
-            if (exception != null)
-            {
-                return RedirectToError(exception);
-            }
-
-            var model = new ReportModel
-            {
-                ReportName = lib.Common.Constants.REPORT_NAME_TOP_BARGAINS,
-                PageTitle = lib.Common.Constants.REPORT_NAME_TOP_BARGAINS,
-
-                Suggestions = result.Where(a => a.Rating > 5).Select(a => new SuggestionModelItem
-                {
-                    Name = a.Name,
-                    DrinkType = a.Type,
-                    EasyToFind = a.EasyToFind,
-                    TastingNotes = a.TastingNotes,
-                    Nose = a.Nose,
-                    Price = a.Price,
-                    AdditionalNotes = a.AdditionalNotes,
-                    Aged = a.Aged,
-                    ABV = a.ABV,
-                    WorthIt = a.WorthIt,
-                    Rating = a.Rating,
-                    ActualPrice = a.ActualPrice,
-                    MaxWorthItPrice = a.MaxWorthItPrice
-                }).OrderByDescending(a => a.Rating).ToList()
-            };
-
-            return View("Index", model);
-        }
+        public IActionResult TopBargains() => RenderReport(new TopBargainsReport());
     }
 }

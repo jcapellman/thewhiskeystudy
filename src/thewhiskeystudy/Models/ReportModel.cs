@@ -11,5 +11,7 @@ namespace thewhiskeystudy.Models
         public string PageTitle { get; set; }
 
         public string ReportName { get; set; }
+
+        public string ReportDescription { get; set; }
     }
 }

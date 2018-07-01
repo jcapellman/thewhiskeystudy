@@ -1,0 +1,69 @@
+2018-02-03 08:41:27.3497 Info Message Template Auto Format enabled
+2018-02-03 08:41:27.4433 Info Adding target File Target[allfile]
+2018-02-03 08:41:27.4602 Info Adding target File Target[ownFile-web]
+2018-02-03 08:41:27.4602 Info Adding target Null Target[blackhole]
+2018-02-03 08:41:27.4602 Info Configured from an XML element in nlog.config...
+2018-02-03 08:41:27.5006 Info Found 56 configuration items
+2018-02-03 08:41:27.5107 Info Found 56 configuration items
+2018-02-03 08:41:28.3575 Info Message Template Auto Format enabled
+2018-02-03 08:41:28.3633 Info Found 56 configuration items
+2018-02-03 08:41:28.3633 Info Adding target File Target[allfile]
+2018-02-03 08:41:28.3633 Info Adding target File Target[ownFile-web]
+2018-02-03 08:41:28.3633 Info Adding target Null Target[blackhole]
+2018-02-03 08:41:28.3633 Info Configured from an XML element in nlog.config...
+2018-02-05 08:59:51.3407 Info Message Template Auto Format enabled
+2018-02-05 08:59:51.4293 Info Adding target File Target[allfile]
+2018-02-05 08:59:51.4293 Info Adding target File Target[ownFile-web]
+2018-02-05 08:59:51.4411 Info Adding target Null Target[blackhole]
+2018-02-05 08:59:51.4411 Info Configured from an XML element in C:\jcgit\thewhiskeystudy\src\thewhiskeystudy\bin\Debug\netcoreapp2.0\NLog.config...
+2018-02-05 08:59:51.4666 Info Found 56 configuration items
+2018-02-05 08:59:51.4666 Info Configuration initialized.
+2018-02-05 08:59:51.4870 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.0.6954. Product version: 4.5.0-rc04.
+2018-02-05 08:59:51.4870 Info Message Template Auto Format enabled
+2018-02-05 08:59:51.4870 Info Found 56 configuration items
+2018-02-05 08:59:51.4870 Info Adding target File Target[allfile]
+2018-02-05 08:59:51.4870 Info Adding target File Target[ownFile-web]
+2018-02-05 08:59:51.4870 Info Adding target Null Target[blackhole]
+2018-02-05 08:59:51.4870 Info Configured from an XML element in C:\jcgit\thewhiskeystudy\src\thewhiskeystudy\bin\Debug\netcoreapp2.0\NLog.config...
+2018-02-05 09:24:47.4822 Info Message Template Auto Format enabled
+2018-02-05 09:24:47.5643 Info Adding target File Target[allfile]
+2018-02-05 09:24:47.5643 Info Adding target File Target[ownFile-web]
+2018-02-05 09:24:47.5991 Info Adding target Null Target[blackhole]
+2018-02-05 09:24:47.6067 Info Configured from an XML element in C:\jcgit\thewhiskeystudy\src\thewhiskeystudy\bin\Debug\netcoreapp2.0\NLog.config...
+2018-02-05 09:24:47.6260 Info Found 56 configuration items
+2018-02-05 09:24:47.6260 Info Configuration initialized.
+2018-02-05 09:24:47.6460 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.0.6954. Product version: 4.5.0-rc04.
+2018-02-05 09:24:47.6460 Info Message Template Auto Format enabled
+2018-02-05 09:24:47.6460 Info Found 56 configuration items
+2018-02-05 09:24:47.6460 Info Adding target File Target[allfile]
+2018-02-05 09:24:47.6460 Info Adding target File Target[ownFile-web]
+2018-02-05 09:24:47.6460 Info Adding target Null Target[blackhole]
+2018-02-05 09:24:47.6460 Info Configured from an XML element in C:\jcgit\thewhiskeystudy\src\thewhiskeystudy\bin\Debug\netcoreapp2.0\NLog.config...
+2018-02-05 09:28:23.1040 Info Message Template Auto Format enabled
+2018-02-05 09:28:23.1738 Info Adding target File Target[allfile]
+2018-02-05 09:28:23.1738 Info Adding target File Target[ownFile-web]
+2018-02-05 09:28:23.1842 Info Adding target Null Target[blackhole]
+2018-02-05 09:28:23.1842 Info Configured from an XML element in C:\jcgit\thewhiskeystudy\src\thewhiskeystudy\bin\Debug\netcoreapp2.0\NLog.config...
+2018-02-05 09:28:23.2086 Info Found 56 configuration items
+2018-02-05 09:28:23.2189 Info Configuration initialized.
+2018-02-05 09:28:23.2189 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.0.6954. Product version: 4.5.0-rc04.
+2018-02-05 09:28:23.2189 Info Message Template Auto Format enabled
+2018-02-05 09:28:23.2320 Info Found 56 configuration items
+2018-02-05 09:28:23.2320 Info Adding target File Target[allfile]
+2018-02-05 09:28:23.2320 Info Adding target File Target[ownFile-web]
+2018-02-05 09:28:23.2320 Info Adding target Null Target[blackhole]
+2018-02-05 09:28:23.2320 Info Configured from an XML element in C:\jcgit\thewhiskeystudy\src\thewhiskeystudy\bin\Debug\netcoreapp2.0\NLog.config...
+2018-02-05 16:03:20.6471 Info Message Template Auto Format enabled
+2018-02-05 16:03:20.7446 Info Adding target File Target[allfile]
+2018-02-05 16:03:20.7509 Info Adding target File Target[ownFile-web]
+2018-02-05 16:03:20.7509 Info Adding target Null Target[blackhole]
+2018-02-05 16:03:20.7646 Info Configured from an XML element in C:\jcgit\thewhiskeystudy\src\thewhiskeystudy\bin\Debug\netcoreapp2.0\NLog.config...
+2018-02-05 16:03:20.7840 Info Found 56 configuration items
+2018-02-05 16:03:20.7953 Info Configuration initialized.
+2018-02-05 16:03:20.8191 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.0.6954. Product version: 4.5.0-rc04.
+2018-02-05 16:03:20.8191 Info Message Template Auto Format enabled
+2018-02-05 16:03:20.8191 Info Found 56 configuration items
+2018-02-05 16:03:20.8191 Info Adding target File Target[allfile]
+2018-02-05 16:03:20.8191 Info Adding target File Target[ownFile-web]
+2018-02-05 16:03:20.8191 Info Adding target Null Target[blackhole]
+2018-02-05 16:03:20.8241 Info Configured from an XML element in C:\jcgit\thewhiskeystudy\src\thewhiskeystudy\bin\Debug\netcoreapp2.0\NLog.config...

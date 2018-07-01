@@ -35,22 +35,23 @@ namespace thewhiskeystudy.Managers
             return (true, null);
         }
 
-        public (List<RawDatabaseItem> result, Exception exception) GetDatabase() {
+        private (List<RawDatabaseItem> result, Exception exception) GetDatabase() {
             try
             {
                 var cachedItem = GetCachedItem<List<RawDatabaseItem>>(CacheKeys.FULL_RAW_DB);
 
                 // Database exists and cache hasn't been initialized
-                if (cachedItem == default(List<RawDatabaseItem>) && File.Exists(Constants.FILE_JSON_DBFILENAME))
+                if (cachedItem.result != default(List<RawDatabaseItem>) || !File.Exists(Constants.FILE_JSON_DBFILENAME))
                 {
-                    var result = JsonConvert.DeserializeObject<List<RawDatabaseItem>>(File.ReadAllText(Constants.FILE_JSON_DBFILENAME));
-
-                    AddCachedItem(CacheKeys.FULL_RAW_DB, result);
-
-                    return (result, null);
+                    return (cachedItem.result, null);
                 }
 
-                return (cachedItem, null);
+                var result = JsonConvert.DeserializeObject<List<RawDatabaseItem>>(File.ReadAllText(Constants.FILE_JSON_DBFILENAME));
+
+                AddCachedItem(CacheKeys.FULL_RAW_DB, result);
+
+                return (result, null);
+
             } catch (Exception ex)
             {
                 return (null, ex);

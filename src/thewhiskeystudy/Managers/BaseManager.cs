@@ -8,28 +8,22 @@ namespace thewhiskeystudy.Managers
 {
     public class BaseManager
     {
-        protected IMemoryCache cache;
-        
-        public BaseManager(IMemoryCache cache)
+        private readonly IMemoryCache _cache;
+
+        protected BaseManager(IMemoryCache cache)
         {
-            this.cache = cache;
+            _cache = cache;
         }
 
-        protected T GetCachedItem<T>(CacheKeys key)
-        {
-            if (!cache.TryGetValue(key, out T cacheEntry))
-            {
-                return default;
-            }
-
-            return cache.Get<T>(key);
-        }
+        protected (bool isFound, T result) GetCachedItem<T>(CacheKeys key) where T : class => !_cache.TryGetValue(key, out T cacheEntry)
+                ? (false, null)
+                : (true, _cache.Get<T>(key));
 
         protected void AddCachedItem<T>(CacheKeys key, T obj)
         {
             var cacheEntryOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.MaxValue);
 
-            cache.Set(key, obj, cacheEntryOptions);
+            _cache.Set(key, obj, cacheEntryOptions);
         }
     }
 }

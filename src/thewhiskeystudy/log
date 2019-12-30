@@ -75,3 +75,51 @@
 2018-09-09 12:40:18.0059 Info Found 56 configuration items
 2018-09-09 12:40:18.0283 Info Configuration initialized.
 2018-09-09 12:40:18.0501 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.6.7874. Product version: 4.5.6.
+2018-11-30 22:16:57.8219 Info Message Template Auto Format enabled
+2018-11-30 22:16:57.9411 Info Adding target File Target[allfile]
+2018-11-30 22:16:57.9411 Info Adding target File Target[ownFile-web]
+2018-11-30 22:16:57.9411 Info Adding target Null Target[blackhole]
+2018-11-30 22:16:57.9557 Info Configured from an XML element in D:\jcgit\thewhiskeystudy\src\thewhiskeystudy\bin\Debug\netcoreapp2.1\NLog.config...
+2018-11-30 22:16:57.9863 Info Found 56 configuration items
+2018-11-30 22:16:58.0122 Info Configuration initialized.
+2018-11-30 22:16:58.0285 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.11.8645. Product version: 4.5.11.
+2018-12-01 20:00:11.6688 Info Message Template Auto Format enabled
+2018-12-01 20:00:11.7802 Info Adding target File Target[allfile]
+2018-12-01 20:00:11.7802 Info Adding target File Target[ownFile-web]
+2018-12-01 20:00:11.7802 Info Adding target Null Target[blackhole]
+2018-12-01 20:00:11.7971 Info Configured from an XML element in D:\jcgit\thewhiskeystudy\src\thewhiskeystudy\bin\Debug\netcoreapp2.1\NLog.config...
+2018-12-01 20:00:11.8239 Info Found 56 configuration items
+2018-12-01 20:00:11.8526 Info Configuration initialized.
+2018-12-01 20:00:11.8736 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.11.8645. Product version: 4.5.11.
+2018-12-01 20:09:00.1211 Info Message Template Auto Format enabled
+2018-12-01 20:09:00.2218 Info Adding target File Target[allfile]
+2018-12-01 20:09:00.2218 Info Adding target File Target[ownFile-web]
+2018-12-01 20:09:00.2218 Info Adding target Null Target[blackhole]
+2018-12-01 20:09:00.2370 Info Configured from an XML element in D:\jcgit\thewhiskeystudy\src\thewhiskeystudy\bin\Debug\netcoreapp2.1\NLog.config...
+2018-12-01 20:09:00.2596 Info Found 56 configuration items
+2018-12-01 20:09:00.2895 Info Configuration initialized.
+2018-12-01 20:09:00.3101 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.11.8645. Product version: 4.5.11.
+2018-12-02 16:23:13.8619 Info Message Template Auto Format enabled
+2018-12-02 16:23:14.0605 Info Adding target File Target[allfile]
+2018-12-02 16:23:14.0629 Info Adding target File Target[ownFile-web]
+2018-12-02 16:23:14.0629 Info Adding target Null Target[blackhole]
+2018-12-02 16:23:14.0629 Info Configured from an XML element in D:\jcgit\thewhiskeystudy\src\thewhiskeystudy\bin\Debug\netcoreapp2.1\NLog.config...
+2018-12-02 16:23:14.0943 Info Found 56 configuration items
+2018-12-02 16:23:14.1168 Info Configuration initialized.
+2018-12-02 16:23:14.1511 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.11.8645. Product version: 4.5.11.
+2018-12-02 16:25:40.1970 Info Message Template Auto Format enabled
+2018-12-02 16:25:40.3022 Info Adding target File Target[allfile]
+2018-12-02 16:25:40.3022 Info Adding target File Target[ownFile-web]
+2018-12-02 16:25:40.3022 Info Adding target Null Target[blackhole]
+2018-12-02 16:25:40.3160 Info Configured from an XML element in D:\jcgit\thewhiskeystudy\src\thewhiskeystudy\bin\Debug\netcoreapp2.1\NLog.config...
+2018-12-02 16:25:40.3389 Info Found 56 configuration items
+2018-12-02 16:25:40.3594 Info Configuration initialized.
+2018-12-02 16:25:40.3594 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.11.8645. Product version: 4.5.11.
+2018-12-02 16:26:15.5661 Info Message Template Auto Format enabled
+2018-12-02 16:26:15.6837 Info Adding target File Target[allfile]
+2018-12-02 16:26:15.6876 Info Adding target File Target[ownFile-web]
+2018-12-02 16:26:15.6876 Info Adding target Null Target[blackhole]
+2018-12-02 16:26:15.6876 Info Configured from an XML element in D:\jcgit\thewhiskeystudy\src\thewhiskeystudy\bin\Debug\netcoreapp2.1\NLog.config...
+2018-12-02 16:26:15.7178 Info Found 56 configuration items
+2018-12-02 16:26:15.7376 Info Configuration initialized.
+2018-12-02 16:26:15.7518 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.11.8645. Product version: 4.5.11.

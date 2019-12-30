@@ -123,3 +123,10 @@
 2018-12-02 16:26:15.7178 Info Found 56 configuration items
 2018-12-02 16:26:15.7376 Info Configuration initialized.
 2018-12-02 16:26:15.7518 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.5.11.8645. Product version: 4.5.11.
+2019-12-29 20:34:46.6006 Info Message Template Auto Format enabled
+2019-12-29 20:34:46.6946 Info Adding target FileTarget(Name=allfile)
+2019-12-29 20:34:46.7015 Info Adding target FileTarget(Name=ownFile-web)
+2019-12-29 20:34:46.7015 Info Adding target NullTarget(Name=blackhole)
+2019-12-29 20:34:46.7445 Info Found 56 configuration items
+2019-12-29 20:34:46.7657 Info Configuration initialized.
+2019-12-29 20:34:46.7657 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.6.8.10751. Product version: 4.6.8.

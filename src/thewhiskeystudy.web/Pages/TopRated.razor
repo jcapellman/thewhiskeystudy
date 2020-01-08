@@ -1,0 +1,32 @@
+﻿@page "/TopRated"
+
+@using thewhiskeystudy.web.Data
+@using thewhiskeystudy.web.Reports
+
+@inject ReportsService ReportService
+
+@if (report != null)
+{
+    <div class="row" style="margin-top: 20px;">
+        <div class="body-text" style="margin-top: 10px;">
+            <h3 class="text-center">@report.ReportName</h3>
+            <p class="text-center">@report.ReportDescription</p>
+
+            @foreach (var item in report.Suggestions)
+            {
+                <component type="typeof(_SuggestionBox)" render-mode="ServerPrerendered"
+                           param-Model=@item />
+                <hr />
+            }
+        </div>
+    </div>
+}
+
+@code {
+    private ReportResponseItem report;
+
+    protected override void OnInitialized()
+    {
+        report = ReportService.GetReport(new TopRatedReport());
+    }
+}

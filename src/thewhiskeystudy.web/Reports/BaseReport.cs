@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Linq;
 
-using Microsoft.Extensions.Caching.Memory;
-
 using thewhiskeystudy.lib.Objects;
-using thewhiskeystudy.Models;
 
-namespace thewhiskeystudy.Reports
+using thewhiskeystudy.web.Data;
+
+namespace thewhiskeystudy.web.Reports
 {
     public abstract class BaseReport
     {
@@ -14,18 +13,18 @@ namespace thewhiskeystudy.Reports
         protected abstract string ReportTitle { get; }
         protected abstract string ReportDescription { get; }
 
-        protected abstract (IQueryable<RawDatabaseItem> data, Exception exception) PopulateModel(IMemoryCache cache);
+        protected abstract (IQueryable<RawDatabaseItem> data, Exception exception) PopulateModel();
 
-        public (ReportModel model, Exception exception) GenerateModel(IMemoryCache cache)
+        public (ReportResponseItem model, Exception exception) GenerateModel()
         {
-            var (data, exception) = PopulateModel(cache);
+            var (data, exception) = PopulateModel();
 
             if (exception != null)
             {
                 return (null, exception);
             }
 
-            var model = new ReportModel
+            var model = new ReportResponseItem
             {
                 ReportName = ReportName,
                 PageTitle = ReportTitle,

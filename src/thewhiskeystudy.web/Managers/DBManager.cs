@@ -2,28 +2,23 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
-using Microsoft.Extensions.Caching.Memory;
-
-using Newtonsoft.Json;
+using System.Text.Json;
 
 using thewhiskeystudy.lib.Common;
 using thewhiskeystudy.lib.Enums;
 using thewhiskeystudy.lib.Objects;
 
-namespace thewhiskeystudy.Managers
+namespace thewhiskeystudy.web.Managers
 {
     public class DBManager : BaseManager
     {
-        public DBManager(IMemoryCache cache) : base(cache) { }
-
         public (bool success, Exception exception) UpdateDatabase(string rawJson)
         {
             List<RawDatabaseItem> deserializedObject = null;
 
             try
             {
-                deserializedObject = JsonConvert.DeserializeObject<List<RawDatabaseItem>>(rawJson);
+                deserializedObject = JsonSerializer.Deserialize<List<RawDatabaseItem>>(rawJson);
             } catch (Exception ex)
             {
                 return (false, ex);
@@ -46,7 +41,7 @@ namespace thewhiskeystudy.Managers
                     return (cachedItem.result, null);
                 }
 
-                var result = JsonConvert.DeserializeObject<List<RawDatabaseItem>>(File.ReadAllText(Constants.FILE_JSON_DBFILENAME));
+                var result = JsonSerializer.Deserialize<List<RawDatabaseItem>>(File.ReadAllText(Constants.FILE_JSON_DBFILENAME));
 
                 AddCachedItem(CacheKeys.FULL_RAW_DB, result);
 

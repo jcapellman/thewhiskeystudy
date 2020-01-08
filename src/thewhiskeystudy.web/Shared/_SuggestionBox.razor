@@ -1,0 +1,87 @@
+﻿<div class="SuggestionListingContainer">
+    <h3>@Model.Name</h3>
+
+    <div class="row">
+        <div class="col-md-4">
+            <span class="label">msrp</span><br />
+            <span class="labelValue">$@Model.Price</span>
+        </div>
+
+
+        @if (Model.ActualPrice.HasValue)
+        {
+            <div class="col-md-4">
+                <span class="label">actual going price</span><br />
+                <span class="labelValue">$@Model.ActualPrice.Value</span>
+            </div>
+        }
+
+        @if (Model.MaxWorthItPrice.HasValue)
+        {
+            <div class="col-md-4">
+                <span class="label">max worth it price</span><br />
+                <span class="labelValue">$@Model.MaxWorthItPrice.Value</span>
+            </div>
+        }
+
+        <div class="col-md-4">
+            <span class="label">abv</span><br />
+            <span class="labelValue">@Model.ABV%</span>
+        </div>
+
+        <div class="col-md-4">
+            <span class="label">aged (yrs)</span><br />
+            <span class="labelValue">@Model.Aged</span>
+        </div>
+
+        <div class="col-md-4">
+            <span class="label">easy to find</span><br />
+            <span class="labelValue">@(Model.EasyToFind ? "Yes" : "No")</span>
+        </div>
+
+        <div class="col-md-4">
+            <span class="label">worth it</span><br />
+            <span class="labelValue">@(Model.WorthIt ? "Yes" : "No")</span>
+        </div>
+
+        <div class="col-md-4">
+            <span class="label">rating</span><br />
+            <span class="labelValue">@Model.Rating / 10</span>
+        </div>
+
+        <div class="col-md-4">
+            <span class="label">drink type</span><br />
+            <span class="labelValue">@Model.DrinkType</span>
+        </div>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.TastingNotes))
+    {
+        <div class="NoteContainer">
+            <span class="label">tasting notes</span><br />
+            <span class="labelValue">@Model.TastingNotes</span>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.Nose))
+    {
+        <div class="NoteContainer">
+            <span class="label">nose notes</span><br />
+            <span class="labelValue">@Model.Nose</span>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.AdditionalNotes))
+    {
+        <div class="NoteContainer">
+            <span class="label">additional notes</span><br />
+            <span class="labelValue">@Model.AdditionalNotes</span>
+        </div>
+    }
+</div>
+
+@code
+{
+    [Parameter]
+    public thewhiskeystudy.lib.Objects.SuggestionModelItem Model { get; set; }
+}

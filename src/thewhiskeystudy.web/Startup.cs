@@ -29,7 +29,7 @@ namespace thewhiskeystudy.web
             services.AddMemoryCache();
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<ReportsService>();
 
             services.AddMvc(a => a.EnableEndpointRouting = false);
         }

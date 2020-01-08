@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Linq;
 
-using Microsoft.Extensions.Caching.Memory;
-
 using thewhiskeystudy.lib.Objects;
-using thewhiskeystudy.Managers;
+using thewhiskeystudy.web.Managers;
 
-namespace thewhiskeystudy.Reports
+namespace thewhiskeystudy.web.Reports
 {
     public class TopBargainsReport : BaseReport
     {
@@ -14,9 +12,9 @@ namespace thewhiskeystudy.Reports
         protected override string ReportTitle => lib.Common.Constants.REPORT_NAME_TOP_BARGAINS;
         protected override string ReportDescription => lib.Common.Constants.REPORT_DESCRIPTION_TOP_BARGAINS;
 
-        protected override (IQueryable<RawDatabaseItem> data, Exception exception) PopulateModel(IMemoryCache cache)
+        protected override (IQueryable<RawDatabaseItem> data, Exception exception) PopulateModel()
         {
-            var (result, exception) = new DBManager(cache).GetSuggestions(lib.Enums.SuggestionFormChoices.YES, lib.Enums.SuggestionFormChoices.NO_OPINION,
+            var (result, exception) = new DBManager().GetSuggestions(lib.Enums.SuggestionFormChoices.YES, lib.Enums.SuggestionFormChoices.NO_OPINION,
                 lib.Enums.SuggestionFormChoices.NO_OPINION, 60,
                 lib.Enums.SuggestionFormChoices.NO_OPINION, lib.Enums.SuggestionFormChoices.NO_OPINION,
                 lib.Enums.SuggestionFormChoices.NO_OPINION,

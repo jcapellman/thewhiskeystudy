@@ -2,9 +2,9 @@
 
 using thewhiskeystudy.lib.Objects;
 
-namespace thewhiskeystudy.Models
+namespace thewhiskeystudy.web.Data
 {
-    public class ReportModel
+    public class ReportResponseItem
     {
         public List<SuggestionModelItem> Suggestions { get; set; }
 

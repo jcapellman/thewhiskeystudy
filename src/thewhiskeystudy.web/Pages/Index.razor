@@ -1,28 +1,34 @@
 ﻿@page "/"
+@using System.Text.Json
+@using thewhiskeystudy.web.Models
 
-<header>
-    <div class="header-content">
-        <div class="header-content-inner">
-            <h1 id="homeHeading">Tired of not finding that perfect Whiskey?</h1>
-            <hr>
-            <p>The Whiskey Study was created to help avoid that very common situation where you buy a very hyped up bottle, only to find it was not worth it.</p>
-            <a href="#about" class="btn btn-primary btn-xl page-scroll">Start your journey</a>
+<header class="masthead">
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-lg-7 my-auto">
+                <div class="header-content mx-auto">
+                    <h1 id="homeHeading">Tired of not finding that perfect Whiskey?</h1>
+                    <hr>
+                    <p>The Whiskey Study was created to help avoid that very common situation where you buy a very hyped up bottle, only to find it was not worth it.</p>
+                    <a href="#about" class="btn btn-primary btn-xl page-scroll">Start your journey</a>
+                </div>
+            </div>
         </div>
     </div>
 </header>
 
-<section class="bg-primary" id="about" style="background-image: url('/images/contentbackground.jpg'); color: black;">
-    <div class="container">
-        <div class="row">
+<section class="bg-primary text-center" id="about">
+    <div class="container h-100">
+        <div class="row h-100">
             <h3 class="text-center">Whiskey Suggestion</h3>
             <p class="text-center">Fill in the form below to get suggestions based on your likes/dislikes</p>
 
             <div class="form-group">
                 <div class="row">
-                    <form asp-controller="Suggestion" asp-action="Index" method="post">
+                    <EditForm Model="@Model" OnValidSubmit="@HandleValidSubmit">
                         <div class="SuggestionFormContainer">
                             <div class="entryLabel">
-                               <label>Likes Rye</label>
+                                <label>Likes Rye</label>
                             </div>
                             <div class="entry">
                                 <select asp-for="@Model.LikesRye" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>
@@ -40,7 +46,7 @@
 
                         <div class="SuggestionFormContainer">
                             <div class="entryLabel">
-                                @Html.LabelFor(a => a.LikesSmooth)
+                                <label>Likes Smooth</label>
                             </div>
                             <div class="entry">
                                 <select asp-for="@Model.LikesSmooth" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>
@@ -49,7 +55,7 @@
 
                         <div class="SuggestionFormContainer">
                             <div class="entryLabel">
-                                @Html.LabelFor(a => a.LikesHighProof)
+                                <label>Likes High Proof</label>
                             </div>
                             <div class="entry">
                                 <select asp-for="@Model.LikesHighProof" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>
@@ -58,7 +64,7 @@
 
                         <div class="SuggestionFormContainer">
                             <div class="entryLabel">
-                                @Html.LabelFor(a => a.LikesSweet)
+                                <label>Likes Sweet</label>
                             </div>
                             <div class="entry">
                                 <select asp-for="@Model.LikesSweet" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>
@@ -67,7 +73,7 @@
 
                         <div class="SuggestionFormContainer">
                             <div class="entryLabel">
-                                @Html.LabelFor(a => a.WantsReadilyAvailable)
+                                <label>Wants Readily Available</label>
                             </div>
                             <div class="entry">
                                 <select asp-for="@Model.WantsReadilyAvailable" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>
@@ -76,7 +82,7 @@
 
                         <div class="SuggestionFormContainer">
                             <div class="entryLabel">
-                                @Html.LabelFor(a => a.MostImportantAspect)
+                                <label>Most Important Aspect</label>
                             </div>
                             <div class="entry">
                                 <select asp-for="@Model.MostImportantAspect" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.MostImportantSuggestionChoices>()" class="form-control"></select>
@@ -85,7 +91,7 @@
 
                         <div class="SuggestionFormContainer">
                             <div class="entryLabel">
-                                @Html.LabelFor(a => a.DrinkType)
+                                <label>Drink Type</label>
                             </div>
                             <div class="entry">
                                 <select asp-for="@Model.DrinkType" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.DrinkTypeChoices>()" class="form-control"></select>
@@ -94,7 +100,7 @@
 
                         <div class="SuggestionFormContainer">
                             <div class="entryLabel">
-                                @Html.LabelFor(a => a.MaxPrice)
+                                <label>Max Price</label>
                             </div>
                             <div class="entry">
                                 <input type="number" asp-for="MaxPrice" class="form-control" />
@@ -102,9 +108,19 @@
                         </div>
 
                         <button type="submit" value="Submit" class="btn btn-primary center-block">Submit</button>
-                    </form>
+                    </EditForm>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+@code
+{
+    private SuggestionFormModel Model = new SuggestionFormModel();
+
+    private async void HandleValidSubmit()
+    {
+        await new HttpClient().PostAsync("/Suggestion", new StringContent(JsonSerializer.Serialize(Model)));
+    }
+}

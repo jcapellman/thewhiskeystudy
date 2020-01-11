@@ -127,13 +127,13 @@ namespace thewhiskeystudy.Managers
                 switch (drinkType)
                 {
                     case DrinkTypeChoices.BOURBON:
-                        query = query.Where(a => a.Type == SpiritType.Bourbon);
+                        query = query.Where(a => a.Type == DrinkTypeChoices.BOURBON);
                         break;
                     case DrinkTypeChoices.SCOTCH:
-                        query = query.Where(a => a.Type == SpiritType.Scotch);
+                        query = query.Where(a => a.Type == DrinkTypeChoices.SCOTCH);
                         break;
                     case DrinkTypeChoices.WHISKEY:
-                        query = query.Where(a => a.Type == SpiritType.Whiskey);
+                        query = query.Where(a => a.Type == DrinkTypeChoices.WHISKEY);
                         break;
                 }
             }

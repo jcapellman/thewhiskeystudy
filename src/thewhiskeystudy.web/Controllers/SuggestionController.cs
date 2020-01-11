@@ -16,6 +16,7 @@ namespace thewhiskeystudy.web.Controllers
     {
         public SuggestionController(IMemoryCache cache, ILogger<SuggestionController> logger) : base(cache, logger) { }
     
+        [HttpPost]
         public ActionResult Index(SuggestionFormModel model)
         {
             var (result, exception) = new DBManager().GetSuggestions(model.WantsReadilyAvailable, model.LikesCaramel, model.LikesRye,

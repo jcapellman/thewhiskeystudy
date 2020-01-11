@@ -6,7 +6,7 @@ namespace thewhiskeystudy.lib.Objects
     {
         public string Name { get; set; }
 
-        public SpiritType DrinkType { get; set; }
+        public DrinkTypeChoices DrinkType { get; set; }
 
         public string Aged { get; set; }
 

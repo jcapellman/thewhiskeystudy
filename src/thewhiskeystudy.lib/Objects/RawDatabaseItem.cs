@@ -12,7 +12,7 @@ namespace thewhiskeystudy.lib.Objects
         public string Name { get; set; }
 
         [DataMember]
-        public SpiritType Type { get; set; }
+        public DrinkTypeChoices Type { get; set; }
 
         [DataMember]
         public string Aged { get; set; }
@@ -80,7 +80,7 @@ namespace thewhiskeystudy.lib.Objects
         public RawDatabaseItem(DataRow dataRow)
         {
             Name = dataRow[0].ToString();
-            Type = Enum.Parse<SpiritType>(dataRow[1].ToString(), true);
+            Type = Enum.Parse<DrinkTypeChoices>(dataRow[1].ToString(), true);
             Aged = dataRow[2].ToString();
             Rating = dataRow[3] == DBNull.Value ? 0 : Convert.ToDouble(dataRow[3]);
             ABV = dataRow[4] == DBNull.Value ? 0 : Convert.ToDouble(dataRow[4]);

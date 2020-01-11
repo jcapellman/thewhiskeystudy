@@ -1,10 +1,12 @@
-﻿namespace thewhiskeystudy.lib.Objects
+﻿using thewhiskeystudy.lib.Enums;
+
+namespace thewhiskeystudy.lib.Objects
 {
     public class SuggestionModelItem
     {
         public string Name { get; set; }
 
-        public string DrinkType { get; set; }
+        public SpiritType DrinkType { get; set; }
 
         public string Aged { get; set; }
 

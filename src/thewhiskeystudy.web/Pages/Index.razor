@@ -22,7 +22,7 @@
                     <form asp-controller="Suggestion" asp-action="Index" method="post">
                         <div class="SuggestionFormContainer">
                             <div class="entryLabel">
-                                @Html.LabelFor(a => a.LikesRye)
+                               <label>Likes Rye</label>
                             </div>
                             <div class="entry">
                                 <select asp-for="@Model.LikesRye" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>
@@ -31,7 +31,7 @@
 
                         <div class="SuggestionFormContainer">
                             <div class="entryLabel">
-                                @Html.LabelFor(a => a.LikesCaramel)
+                                <label>Likes Caramel</label>
                             </div>
                             <div class="entry">
                                 <select asp-for="@Model.LikesCaramel" asp-items="Html.GetEnumSelectList<thewhiskeystudy.lib.Enums.SuggestionFormChoices>()" class="form-control"></select>

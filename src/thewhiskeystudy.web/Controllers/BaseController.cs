@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
-namespace thewhiskeystudy.Controllers
+namespace thewhiskeystudy.web.Controllers
 {
     public class BaseController<T> : Controller
     {

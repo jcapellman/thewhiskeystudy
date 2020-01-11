@@ -7,10 +7,10 @@ using Microsoft.Extensions.Logging;
 using thewhiskeystudy.lib.Enums;
 using thewhiskeystudy.lib.Objects;
 
-using thewhiskeystudy.Managers;
-using thewhiskeystudy.Models;
+using thewhiskeystudy.web.Managers;
+using thewhiskeystudy.web.Models;
 
-namespace thewhiskeystudy.Controllers
+namespace thewhiskeystudy.web.Controllers
 {
     public class SuggestionController : BaseController<SuggestionController>
     {
@@ -18,7 +18,7 @@ namespace thewhiskeystudy.Controllers
     
         public ActionResult Index(SuggestionFormModel model)
         {
-            var (result, exception) = new DBManager(cache).GetSuggestions(model.WantsReadilyAvailable, model.LikesCaramel, model.LikesRye,
+            var (result, exception) = new DBManager().GetSuggestions(model.WantsReadilyAvailable, model.LikesCaramel, model.LikesRye,
                 model.MaxPrice, model.LikesHighProof, model.LikesSmooth, model.LikesSweet, model.DrinkType);
 
             if (exception != null)

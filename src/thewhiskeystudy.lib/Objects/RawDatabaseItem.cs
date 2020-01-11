@@ -2,6 +2,8 @@
 using System.Data;
 using System.Runtime.Serialization;
 
+using thewhiskeystudy.lib.Enums;
+
 namespace thewhiskeystudy.lib.Objects
 {
     public class RawDatabaseItem
@@ -10,7 +12,7 @@ namespace thewhiskeystudy.lib.Objects
         public string Name { get; set; }
 
         [DataMember]
-        public string Type { get; set; }
+        public SpiritType Type { get; set; }
 
         [DataMember]
         public string Aged { get; set; }

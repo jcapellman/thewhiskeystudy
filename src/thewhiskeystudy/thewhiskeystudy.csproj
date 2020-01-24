@@ -22,7 +22,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design">
       <Version>3.1.0</Version>
     </PackageReference>
